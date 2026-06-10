@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bala - Human-Led AI-Accelerated Product Design OS</title>
+  <style>
+    :root{
+      --bg:#05060a;--panel:#0b0f17;--panel2:#0f1624;--panel3:#111a2a;--stroke:rgba(255,255,255,.12);
+      --text:#f6f8ff;--soft:#cbd3e4;--muted:#8793aa;--cyan:#46e6ff;--violet:#9a7cff;--lime:#b5ff6d;
+      --rose:#ff6ba8;--amber:#ffcd6b;--blue:#6da8ff;--orange:#ff9f6d;--shadow:0 28px 90px rgba(0,0,0,.5);
+      --r:30px;--max:1240px;
+    }
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 10% 3%,rgba(70,230,255,.16),transparent 30%),radial-gradient(circle at 92% 8%,rgba(154,124,255,.17),transparent 32%),radial-gradient(circle at 54% 50%,rgba(181,255,109,.06),transparent 44%),linear-gradient(180deg,#05060a 0%,#090d15 48%,#05060a 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}
+    .page{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:68px 0 100px}.eyebrow{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--stroke);border-radius:999px;background:rgba(255,255,255,.045);color:var(--soft);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.pulse{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 26px rgba(181,255,109,.9)}
+    .hero{min-height:68vh;display:grid;align-items:center;padding-bottom:44px}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:36px;align-items:end}h1{font-size:clamp(48px,8vw,112px);line-height:.9;letter-spacing:-.08em;margin:28px 0 24px}.gradient{background:linear-gradient(105deg,#fff 0%,#dff9ff 22%,var(--cyan) 43%,var(--violet) 69%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:clamp(18px,2.1vw,27px);color:var(--soft);max-width:900px;margin:0}.lead b{color:#fff;font-weight:680}.hero-card{border:1px solid var(--stroke);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border-radius:var(--r);padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-card:before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg,transparent 0%,rgba(70,230,255,.17) 25%,transparent 44%),linear-gradient(300deg,transparent 12%,rgba(154,124,255,.16) 62%,transparent 78%)}.hero-card>*{position:relative}.mini{margin:0 0 16px;color:#fff;font-weight:700}.os-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.os-tile{border:1px solid rgba(255,255,255,.1);background:rgba(5,8,14,.6);border-radius:20px;padding:16px;min-height:142px}.os-tile small{color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.08em}.os-tile b{display:block;color:#fff;font-size:18px;margin:8px 0 5px}.os-tile span{color:var(--muted);font-size:13px}.proof-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}.proof{border:1px solid rgba(255,255,255,.105);background:rgba(255,255,255,.035);border-radius:18px;padding:14px}.proof small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.proof b{display:block;color:#fff;font-size:14px;margin-top:4px}.section{margin-top:34px;border:1px solid var(--stroke);border-radius:36px;background:rgba(11,15,23,.74);box-shadow:var(--shadow);overflow:hidden;position:relative}.section:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 9% 8%,rgba(70,230,255,.12),transparent 28%),radial-gradient(circle at 88% 0%,rgba(154,124,255,.115),transparent 30%);pointer-events:none}.section-inner{position:relative;z-index:1;padding:clamp(28px,4vw,56px)}.head{display:grid;grid-template-columns:116px 1fr;gap:26px;align-items:start;margin-bottom:30px}.index{font-size:68px;line-height:1;letter-spacing:-.08em;font-weight:900;color:rgba(255,255,255,.25)}h2{font-size:clamp(34px,5vw,64px);line-height:.96;letter-spacing:-.055em;margin:0}.sub{font-size:clamp(16px,1.45vw,20px);color:var(--soft);max-width:860px;margin:14px 0 0}.panel{border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.018));border-radius:28px;padding:clamp(18px,2.4vw,28px);overflow:hidden}.metric-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);color:var(--soft);border-radius:999px;padding:9px 12px;font-size:12.5px}.chip i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--glow)}
+    .truth-map{display:grid;grid-template-columns:1.05fr .9fr;gap:22px;align-items:stretch}.funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.f-step{min-height:245px;border:1px solid rgba(255,255,255,.11);background:rgba(5,8,14,.65);border-radius:22px;padding:18px;position:relative;overflow:hidden}.f-step:after{content:"";position:absolute;left:18px;right:18px;bottom:0;height:4px;background:var(--accent);box-shadow:0 0 22px var(--glow);border-radius:999px}.f-step .no{width:34px;height:34px;border-radius:12px;background:var(--accent);color:#071018;font-weight:900;display:grid;place-items:center;margin-bottom:18px}.f-step h3{margin:0 0 10px;font-size:19px;letter-spacing:-.025em;line-height:1.05}.f-step p{margin:0;color:var(--muted);font-size:13px}.diagnostic{display:grid;gap:12px}.d-card{border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.035);border-radius:20px;padding:16px}.d-card b{color:#fff;display:block;margin-bottom:7px}.d-card p{margin:0;color:var(--muted);font-size:13px}.quote{border:1px solid rgba(181,255,109,.22);background:rgba(181,255,109,.055);border-radius:22px;padding:18px;color:#e8ffda;margin-top:16px}.quote b{color:#fff}
+    .decision-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:24px;align-items:center}.radar-wrap{position:relative;min-height:560px;border:1px solid rgba(255,255,255,.09);background:radial-gradient(circle at 50% 50%,rgba(70,230,255,.09),transparent 38%),rgba(5,8,14,.55);border-radius:26px;display:grid;place-items:center}.score-card{display:grid;gap:12px}.score-row{display:grid;grid-template-columns:140px 1fr 72px;gap:12px;align-items:center;border:1px solid rgba(255,255,255,.1);background:rgba(5,8,14,.64);border-radius:16px;padding:12px}.score-row b{color:#fff;font-size:14px}.bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}.fill{height:100%;width:var(--w);border-radius:999px;background:linear-gradient(90deg,var(--accent),rgba(255,255,255,.85));box-shadow:0 0 20px var(--glow)}.pts{color:var(--muted);font-size:12px;text-align:right}.rule{margin-top:16px;border:1px solid rgba(70,230,255,.22);background:linear-gradient(90deg,rgba(70,230,255,.09),rgba(154,124,255,.08));border-radius:22px;padding:18px}.rule b{display:block;color:#fff;margin-bottom:8px}.rule p{margin:0;color:var(--soft);font-size:13px}.matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.m-cell{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.035);border-radius:18px;padding:15px}.m-cell small{color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.m-cell b{display:block;margin-top:6px;color:#fff}.m-cell p{margin:6px 0 0;color:var(--muted);font-size:12.5px}
+    .os-map{display:grid;gap:16px}.lane{display:grid;grid-template-columns:150px 1fr;gap:16px}.lane-label{border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.035);padding:16px;display:grid;align-content:center;color:#fff;font-weight:780}.lane-label span{font-weight:400;color:var(--muted);font-size:12px;margin-top:4px}.lane-steps{display:grid;grid-template-columns:repeat(8,minmax(100px,1fr));gap:10px}.step{min-height:122px;border:1px solid rgba(255,255,255,.1);background:rgba(5,8,14,.65);border-radius:18px;padding:12px}.step small{font-size:10px;color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.08em}.step b{display:block;color:#fff;font-size:13px;line-height:1.12;margin:7px 0}.step p{margin:0;color:var(--muted);font-size:11.3px;line-height:1.34}.context{border:1px solid rgba(70,230,255,.25);background:linear-gradient(90deg,rgba(70,230,255,.12),rgba(154,124,255,.1),rgba(181,255,109,.08));border-radius:22px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.context b{display:block;color:#fff}.context span{display:block;color:var(--soft);font-size:13px;max-width:760px}.before-after{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.ba{border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:18px;background:rgba(255,255,255,.035)}.ba h3{margin:0 0 12px;font-size:18px}.ba ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}.ba li{font-size:13px;color:var(--muted);display:flex;gap:8px}.ba li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:6px;flex:0 0 auto}.guardrails{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:16px}.guard{border:1px solid rgba(255,255,255,.1);background:rgba(5,8,14,.65);border-radius:16px;padding:12px;text-align:center;color:var(--soft);font-size:12px}.outcomes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.outcome{border:1px solid rgba(255,255,255,.1);background:rgba(5,8,14,.62);border-radius:22px;padding:18px;min-height:140px}.outcome small{color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.08em}.outcome b{display:block;font-size:21px;line-height:1.08;margin:10px 0;color:#fff}.outcome p{margin:0;color:var(--muted);font-size:13px}.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.tool{border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.04);color:var(--soft);border-radius:999px;padding:10px 13px;font-size:13px}.note{text-align:center;color:var(--muted);font-size:13px;max-width:840px;margin:26px auto 0}
+    @media(max-width:1040px){.hero-grid,.truth-map,.decision-grid{grid-template-columns:1fr}.proof-strip,.outcomes{grid-template-columns:1fr 1fr}.funnel{grid-template-columns:1fr 1fr}.lane{grid-template-columns:1fr}.lane-steps{grid-template-columns:repeat(2,1fr)}.guardrails{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.page{width:min(100% - 24px,var(--max));padding-top:36px}.os-grid,.proof-strip,.funnel,.matrix,.before-after,.outcomes{grid-template-columns:1fr}.head{grid-template-columns:1fr;gap:10px}.score-row{grid-template-columns:1fr}.lane-steps{grid-template-columns:1fr}.context{flex-direction:column;align-items:flex-start}.radar-wrap{min-height:430px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Version 2 - portfolio insertion section</div>
+        <div class="hero-grid">
+          <div>
+            <h1><span class="gradient">Human-led, AI-accelerated</span><br/>product design OS.</h1>
+            <p class="lead">I use AI to compress the journey from ambiguity to working product, while keeping <b>problem framing, decision-making, UX judgment, and product quality human-led.</b></p>
+            <div class="proof-strip">
+              <div class="proof"><small>Think</small><b>Find the real problem</b></div>
+              <div class="proof"><small>Decide</small><b>Score trade-offs</b></div>
+              <div class="proof"><small>Accelerate</small><b>Prototype in 24-48h</b></div>
+              <div class="proof"><small>Validate</small><b>Test assumptions early</b></div>
+              <div class="proof"><small>Scale</small><b>Design for next features</b></div>
+            </div>
+          </div>
+          <aside class="hero-card">
+            <p class="mini">What hiring teams should understand in 30 seconds</p>
+            <div class="os-grid">
+              <div class="os-tile" style="--accent:var(--cyan)"><small>01</small><b>Strategic thinking</b><span>I separate the requested solution from the real user, business, and system problem.</span></div>
+              <div class="os-tile" style="--accent:var(--violet)"><small>02</small><b>Decision quality</b><span>I choose product directions through evidence, trade-offs, and solution lifetime.</span></div>
+              <div class="os-tile" style="--accent:var(--lime)"><small>03</small><b>AI acceleration</b><span>AI keeps context alive from research to prototype, not just prompt-to-screen.</span></div>
+              <div class="os-tile" style="--accent:var(--rose)"><small>04</small><b>Outcome ownership</b><span>I connect design work to task time, error rate, adoption, efficiency, and alignment metrics.</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem-truth-lens">
+      <div class="section-inner">
+        <div class="head"><div class="index">01</div><div><h2>Problem Truth Lens</h2><p class="sub">A diagnostic framework for moving from the visible request to the actual product opportunity worth solving.</p></div></div>
+        <div class="panel truth-map">
+          <div>
+            <div class="funnel">
+              <div class="f-step" style="--accent:var(--rose);--glow:rgba(255,107,168,.55)"><div class="no">1</div><h3>Decode the ask</h3><p>Capture what the client, user, or stakeholder is requesting without accepting it as the final solution.</p></div>
+              <div class="f-step" style="--accent:var(--amber);--glow:rgba(255,205,107,.55)"><div class="no">2</div><h3>Mine signals</h3><p>Map user pain, workflow gaps, assumptions, data, constraints, and market patterns.</p></div>
+              <div class="f-step" style="--accent:var(--cyan);--glow:rgba(70,230,255,.55)"><div class="no">3</div><h3>Find the root</h3><p>Identify whether the real issue is visibility, trust, decision delay, cognitive load, or flow breakdown.</p></div>
+              <div class="f-step" style="--accent:var(--lime);--glow:rgba(181,255,109,.55)"><div class="no">4</div><h3>Frame the bet</h3><p>Turn the problem into a product thesis with evidence, expected outcome, and next capability path.</p></div>
+            </div>
+            <div class="metric-row">
+              <span class="chip" style="--accent:var(--cyan);--glow:rgba(70,230,255,.5)"><i></i>Proof chip: reframed request into root problem</span>
+              <span class="chip" style="--accent:var(--lime);--glow:rgba(181,255,109,.5)"><i></i>Metric lens: task time / error rate / adoption</span>
+              <span class="chip" style="--accent:var(--violet);--glow:rgba(154,124,255,.5)"><i></i>Output: opportunity thesis before UI</span>
+            </div>
+          </div>
+          <div class="diagnostic">
+            <div class="d-card"><b>Key question</b><p>Is this the real problem, or only the visible symptom the user/client can describe?</p></div>
+            <div class="d-card"><b>Senior shift</b><p>From "make the requested screen" to "define the product move that solves the underlying workflow gap."</p></div>
+            <div class="d-card"><b>Decision evidence</b><p>I look for customer pain, business value, workflow frequency, risk, feasibility, and future extensibility before choosing a direction.</p></div>
+            <div class="d-card"><b>What to show in case studies</b><p>Before/after problem framing, rejected solution paths, why the chosen direction was more durable, and which metric it was meant to move.</p></div>
+          </div>
+        </div>
+        <div class="quote"><b>Portfolio copy:</b> I do not start by designing the requested screen. I first diagnose whether the request is the real problem, a symptom, or only one possible solution. This helps me turn vague requirements into product opportunities with clearer user value, business impact, and long-term scalability.</div>
+      </div>
+    </section>
+
+    <section class="section" id="strategic-decision-mesh">
+      <div class="section-inner">
+        <div class="head"><div class="index">02</div><div><h2>Strategic Decision Mesh</h2><p class="sub">A product decision model for choosing directions through evidence, trade-offs, and solution lifetime instead of preference-led design.</p></div></div>
+        <div class="panel decision-grid">
+          <div class="radar-wrap">
+            <svg width="100%" height="100%" viewBox="0 0 620 560" role="img" aria-label="Strategic Decision Mesh diagram">
+              <defs><filter id="g"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#46e6ff"/><stop offset="50%" stop-color="#9a7cff"/><stop offset="100%" stop-color="#b5ff6d"/></linearGradient></defs>
+              <g transform="translate(310 280)">
+                <circle r="220" fill="none" stroke="rgba(255,255,255,.08)"/><circle r="160" fill="none" stroke="rgba(255,255,255,.08)"/><circle r="95" fill="none" stroke="rgba(255,255,255,.08)"/>
+                <line x1="0" y1="-230" x2="0" y2="230" stroke="rgba(255,255,255,.07)"/><line x1="-199" y1="-115" x2="199" y2="115" stroke="rgba(255,255,255,.07)"/><line x1="-199" y1="115" x2="199" y2="-115" stroke="rgba(255,255,255,.07)"/>
+                <polygon points="0,-190 155,-90 132,76 0,172 -150,86 -158,-91" fill="url(#mg)" opacity=".22" stroke="url(#mg)" stroke-width="3" filter="url(#g)"/>
+                <circle r="74" fill="rgba(5,8,14,.96)" stroke="rgba(255,255,255,.14)"/><text x="0" y="-12" fill="#fff" text-anchor="middle" font-size="18" font-weight="800">Product</text><text x="0" y="13" fill="#fff" text-anchor="middle" font-size="18" font-weight="800">Direction</text><text x="0" y="38" fill="#8793aa" text-anchor="middle" font-size="11">go / iterate / park</text>
+                <g fill="#fff" font-size="13" font-weight="700"><text x="0" y="-246" text-anchor="middle">User need</text><text x="222" y="-118" text-anchor="middle">Business value</text><text x="226" y="136" text-anchor="middle">Feasibility</text><text x="0" y="256" text-anchor="middle">Stakeholder fit</text><text x="-226" y="136" text-anchor="middle">Market timing</text><text x="-226" y="-118" text-anchor="middle">Scale lifetime</text></g>
+                <circle cx="0" cy="-190" r="7" fill="#46e6ff" filter="url(#g)"/><circle cx="155" cy="-90" r="7" fill="#9a7cff" filter="url(#g)"/><circle cx="132" cy="76" r="7" fill="#b5ff6d" filter="url(#g)"/><circle cx="0" cy="172" r="7" fill="#ffcd6b" filter="url(#g)"/><circle cx="-150" cy="86" r="7" fill="#ff6ba8" filter="url(#g)"/><circle cx="-158" cy="-91" r="7" fill="#6da8ff" filter="url(#g)"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="score-card">
+              <div class="score-row" style="--accent:var(--cyan);--glow:rgba(70,230,255,.5);--w:88%"><b>User need</b><div class="bar"><div class="fill"></div></div><span class="pts">high</span></div>
+              <div class="score-row" style="--accent:var(--violet);--glow:rgba(154,124,255,.5);--w:82%"><b>Business value</b><div class="bar"><div class="fill"></div></div><span class="pts">high</span></div>
+              <div class="score-row" style="--accent:var(--lime);--glow:rgba(181,255,109,.5);--w:74%"><b>Feasibility</b><div class="bar"><div class="fill"></div></div><span class="pts">medium+</span></div>
+              <div class="score-row" style="--accent:var(--amber);--glow:rgba(255,205,107,.5);--w:80%"><b>Stakeholder fit</b><div class="bar"><div class="fill"></div></div><span class="pts">high</span></div>
+              <div class="score-row" style="--accent:var(--rose);--glow:rgba(255,107,168,.5);--w:76%"><b>Market timing</b><div class="bar"><div class="fill"></div></div><span class="pts">medium+</span></div>
+              <div class="score-row" style="--accent:var(--blue);--glow:rgba(109,168,255,.5);--w:90%"><b>Scale lifetime</b><div class="bar"><div class="fill"></div></div><span class="pts">high</span></div>
+            </div>
+            <div class="rule"><b>Decision rule</b><p>Move forward only when the concept has strong user need, visible business value, realistic build feasibility, and a foundation that can support the next capability without redesigning from zero.</p></div>
+            <div class="matrix">
+              <div class="m-cell"><small>Go</small><b>Build / prototype</b><p>High value, clear pain, feasible path, scalable base.</p></div>
+              <div class="m-cell"><small>Iterate</small><b>Refine direction</b><p>Good opportunity, but weak proof, unclear flow, or edge-case risk.</p></div>
+              <div class="m-cell"><small>Park</small><b>De-prioritize</b><p>Low value, weak signal, heavy effort, or short solution lifetime.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="quote"><b>Portfolio copy:</b> I make product design decisions through a decision mesh: user need, business value, feasibility, stakeholder fit, market timing, and solution lifetime. The goal is not to ship the easiest UI, but to choose the product direction with the best long-term return.</div>
+      </div>
+    </section>
+
+    <section class="section" id="ai-product-acceleration-os">
+      <div class="section-inner">
+        <div class="head"><div class="index">03</div><div><h2>AI Product Acceleration OS</h2><p class="sub">A human-led workflow where AI keeps product context alive across discovery, design, prototyping, vibe coding, and validation.</p></div></div>
+        <div class="panel os-map">
+          <div class="lane"><div class="lane-label">Human judgment<span>What I own</span></div><div class="lane-steps">
+            <div class="step" style="--accent:var(--cyan)"><small>Gate 01</small><b>Problem frame</b><p>Define what is worth solving.</p></div><div class="step" style="--accent:var(--cyan)"><small>Gate 02</small><b>Insight quality</b><p>Filter signal from noise.</p></div><div class="step" style="--accent:var(--cyan)"><small>Gate 03</small><b>Trade-off call</b><p>Pick what to pursue or reject.</p></div><div class="step" style="--accent:var(--cyan)"><small>Gate 04</small><b>Flow logic</b><p>Own IA and task sequence.</p></div><div class="step" style="--accent:var(--cyan)"><small>Gate 05</small><b>UX quality</b><p>Clarity, hierarchy, emotion.</p></div><div class="step" style="--accent:var(--cyan)"><small>Gate 06</small><b>Edge cases</b><p>Empty, error, load, permission.</p></div><div class="step" style="--accent:var(--cyan)"><small>Gate 07</small><b>Build intent</b><p>Translate design into prompts/specs.</p></div><div class="step" style="--accent:var(--cyan)"><small>Gate 08</small><b>Validation</b><p>Check behavior and readiness.</p></div>
+          </div></div>
+          <div class="context"><div><b>AI as product memory layer</b><span>Research, competitor references, stakeholder inputs, personas, IA, flows, design rules, edge cases, and build prompts stay connected instead of living in disconnected documents.</span></div><span>Less context loss -> faster decisions -> stronger execution</span></div>
+          <div class="lane"><div class="lane-label">AI acceleration<span>What AI speeds up</span></div><div class="lane-steps">
+            <div class="step" style="--accent:var(--lime)"><small>Discover</small><b>Research scan</b><p>Surface patterns and questions.</p></div><div class="step" style="--accent:var(--lime)"><small>Synthesize</small><b>Signal cluster</b><p>Group pain points and themes.</p></div><div class="step" style="--accent:var(--lime)"><small>Ideate</small><b>Option range</b><p>Generate directions to compare.</p></div><div class="step" style="--accent:var(--lime)"><small>Structure</small><b>IA + states</b><p>Map flows and interaction states.</p></div><div class="step" style="--accent:var(--lime)"><small>Design</small><b>UI variants</b><p>Explore layouts and content.</p></div><div class="step" style="--accent:var(--lime)"><small>Prototype</small><b>Testable flow</b><p>Make realistic concepts fast.</p></div><div class="step" style="--accent:var(--lime)"><small>Vibe code</small><b>Live front-end</b><p>Build with AI agents in IDE.</p></div><div class="step" style="--accent:var(--lime)"><small>Refine</small><b>QA loop</b><p>Check bugs, UX gaps, responsive states.</p></div>
+          </div></div>
+          <div class="before-after">
+            <div class="ba" style="--accent:var(--rose)"><h3>Traditional risk</h3><ul><li>Research sits in static documents</li><li>Execution loses earlier context</li><li>Edge cases appear late</li><li>Prototype takes longer to validate</li></ul></div>
+            <div class="ba" style="--accent:var(--lime)"><h3>AI-accelerated advantage</h3><ul><li>Context travels into design and build</li><li>AI recalls patterns, constraints, and edge cases</li><li>Working prototype can happen in 24-48h</li><li>Validation starts before heavy engineering</li></ul></div>
+          </div>
+          <div class="guardrails">
+            <div class="guard">Bias check</div><div class="guard">Hallucination check</div><div class="guard">Accessibility</div><div class="guard">Edge cases</div><div class="guard">Design system</div><div class="guard">Tech feasibility</div><div class="guard">Stakeholder review</div>
+          </div>
+        </div>
+        <div class="quote"><b>Portfolio copy:</b> My AI workflow is not prompt-to-screen. I use AI as a continuous product memory layer that accelerates research, synthesis, UI exploration, edge-case thinking, and live front-end prototyping. I still own the product judgment: what to solve, what to reject, what to validate, and how the solution should scale.</div>
+      </div>
+    </section>
+
+    <section class="section" id="what-this-enables">
+      <div class="section-inner">
+        <div class="head"><div class="index">04</div><div><h2>What this enables</h2><p class="sub">Outcome signals that make the framework practical, measurable, and credible inside portfolio case studies.</p></div></div>
+        <div class="outcomes">
+          <div class="outcome" style="--accent:var(--cyan)"><small>Speed</small><b>24-48h testable prototype</b><p>Move from brief to interactive front-end concept for faster feedback and alignment.</p></div>
+          <div class="outcome" style="--accent:var(--violet)"><small>Quality</small><b>Less context loss</b><p>Research, constraints, decisions, and edge cases stay connected into execution.</p></div>
+          <div class="outcome" style="--accent:var(--lime)"><small>Impact</small><b>Metric-led design</b><p>Frame work around adoption, task time, error rate, efficiency, cost, or decision speed.</p></div>
+          <div class="outcome" style="--accent:var(--rose)"><small>Scale</small><b>Next-feature foundation</b><p>Design the current solution as a platform for the next product capability.</p></div>
+        </div>
+        <div class="tools"><span class="tool">Thinking partner: ChatGPT / Claude / Gemini</span><span class="tool">Research synthesis: AI notes + prompt frameworks</span><span class="tool">Design: Figma / FigJam / Framer</span><span class="tool">Product mapping: Notion / Miro / Sheets</span><span class="tool">Build acceleration: VS Code + Claude Code / Cursor-style agents</span><span class="tool">Validation: heuristic review + edge-case prompts + stakeholder review</span></div>
+      </div>
+    </section>
+    <p class="note">Recommended placement: after your landing-page hero/name section and before project case studies. This makes every project below it read as proof of your senior product-design operating system.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="QA Run — Reframing a QA platform from a tooling problem into a systems decision. Case study by Balamurugan Sivamayam." />
+<title>QA Run — Case Study · Bala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05060a;
+  --panel:#0b0f17;
+  --panel-2:#0f1624;
+  --stroke:rgba(255,255,255,.12);
+  --muted:#8e9ab2;
+  --text:#f5f7fb;
+  --soft:#cbd3e4;
+  --cyan:#46e6ff;
+  --violet:#9a7cff;
+  --lime:#b5ff6d;
+  --rose:#ff6ba8;
+  --amber:#ffcd6b;
+  --blue:#6da8ff;
+  --green:#3dffa0;
+  --radius:28px;
+  --max:1240px;
+  --shadow:0 28px 90px rgba(0,0,0,.55);
+}
+
+/* RESET */
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;color:var(--text);
+  font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-weight:400;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(circle at 8% 4%, rgba(181,255,109,.14), transparent 32%),
+    radial-gradient(circle at 92% 8%, rgba(70,230,255,.14), transparent 34%),
+    radial-gradient(circle at 50% 78%, rgba(154,124,255,.10), transparent 46%),
+    linear-gradient(180deg, #05060a 0%, #090d15 50%, #05060a 100%);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer;}
+
+/* UTILITIES */
+.container{width:min(var(--max), calc(100% - 48px));margin:0 auto;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 14px;border:1px solid var(--stroke);
+  border-radius:999px;background:rgba(255,255,255,.045);
+  color:var(--soft);
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+}
+.section-eyebrow{
+  color:var(--muted);font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  margin-bottom:18px;
+}
+.section-title{
+  font-size:clamp(30px,4.5vw,56px);
+  letter-spacing:-.05em;line-height:1.0;font-weight:700;
+  margin:0 0 18px;
+}
+.section-subtitle{
+  font-size:clamp(16px,1.4vw,18px);
+  color:var(--soft);max-width:760px;line-height:1.6;margin:0;
+}
+.gradient-text{
+  background:linear-gradient(105deg,#fff 0%,#dff9ff 20%,var(--lime) 48%,var(--cyan) 72%,#fff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.glass{
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s ease-out, transform .55s ease-out;}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+
+/* CURSOR */
+.cursor{
+  position:fixed;top:0;left:0;width:12px;height:12px;border-radius:50%;
+  background:#fff;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  mix-blend-mode:difference;
+  transition:width .2s, height .2s, background .2s;
+}
+.cursor.is-hover{width:32px;height:32px;background:rgba(255,255,255,.3);}
+@media (hover:none),(max-width:768px){.cursor{display:none;}}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 0;
+  background:rgba(5,6,10,.7);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  transition:box-shadow .3s ease, background .3s ease;
+}
+.nav.scrolled{
+  background:rgba(5,6,10,.88);
+  box-shadow:0 8px 28px rgba(0,0,0,.4);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.back-link{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:14px;color:var(--soft);font-weight:500;
+  transition:color .2s ease;
+}
+.back-link:hover{color:#fff;}
+.back-link .arrow{transition:transform .2s ease;}
+.back-link:hover .arrow{transform:translateX(-3px);}
+.nav-mid{
+  display:flex;align-items:center;gap:10px;
+  font-size:14px;color:#fff;font-weight:600;letter-spacing:-.01em;
+}
+.nav-mid .tag{
+  font-size:11px;color:var(--lime);font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  padding:4px 10px;border:1px solid rgba(181,255,109,.3);border-radius:999px;
+  background:rgba(181,255,109,.06);
+}
+.live-link{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 18px;border-radius:999px;
+  border:1px solid var(--stroke);background:rgba(255,255,255,.06);
+  color:#fff;font-size:13px;font-weight:500;
+  transition:all .25s ease;
+}
+.live-link:hover{background:var(--lime);color:#0a0d14;border-color:var(--lime);}
+
+/* HERO */
+.hero{
+  padding:140px 0 60px;
+  position:relative;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:6px 14px;border-radius:999px;
+  border:1px solid rgba(181,255,109,.3);
+  background:rgba(181,255,109,.07);
+  color:var(--lime);
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  margin-bottom:24px;
+}
+.hero-tag .d{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 14px var(--lime);}
+.hero-title{
+  font-size:clamp(48px,7vw,88px);
+  letter-spacing:-.06em;line-height:.95;font-weight:700;
+  margin:0 0 18px;
+}
+.hero-sub{
+  font-size:clamp(18px,2vw,24px);
+  color:var(--soft);max-width:820px;line-height:1.5;margin:0 0 32px;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;
+}
+.meta-pill{
+  padding:7px 14px;border-radius:999px;
+  border:1px solid var(--stroke);background:rgba(255,255,255,.04);
+  font-size:12.5px;color:var(--soft);
+}
+.hero-metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.hero-metric{
+  position:relative;
+  padding:24px;border-radius:24px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(20px);
+  overflow:hidden;
+}
+.hero-metric::after{
+  content:'';position:absolute;left:24px;right:24px;bottom:0;height:3px;
+  background:var(--accent);box-shadow:0 0 18px var(--accent-glow);
+  border-radius:999px;
+}
+.hero-metric .num{
+  font-size:clamp(32px,4vw,48px);
+  font-weight:800;letter-spacing:-.045em;line-height:1;color:#fff;margin-bottom:8px;
+}
+.hero-metric .num .unit{font-size:.5em;color:var(--accent);font-weight:600;margin-left:2px;}
+.hero-metric .lbl{
+  font-size:12.5px;color:var(--soft);line-height:1.4;
+}
+
+/* SECTION FRAME */
+.section{padding:64px 0;}
+.panel{
+  border-radius:36px;
+  padding:clamp(28px,4vw,56px);
+  border:1px solid var(--stroke);
+  background:rgba(11,15,23,.72);
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.panel::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 4%, rgba(181,255,109,.10), transparent 30%),
+    radial-gradient(circle at 92% 6%, rgba(70,230,255,.09), transparent 32%);
+}
+.panel-inner{position:relative;z-index:1;}
+.panel-head{margin-bottom:32px;max-width:780px;}
+.panel-head h2{
+  font-size:clamp(28px,3.5vw,44px);
+  letter-spacing:-.04em;line-height:1.05;font-weight:700;margin:0 0 14px;
+}
+.panel-head p{margin:0;color:var(--soft);font-size:16px;line-height:1.55;}
+
+/* LENS CARDS (Situation) */
+.lens-headline{
+  margin:0 0 32px;
+  font-size:clamp(24px,2.6vw,34px);
+  letter-spacing:-.03em;line-height:1.15;font-weight:600;color:#fff;
+  max-width:760px;
+}
+.lens-headline em{color:var(--lime);font-style:normal;font-weight:700;}
+.lens-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.lens-card{
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(5,8,14,.6);
+  border-radius:22px;padding:20px;
+  position:relative;overflow:hidden;
+  min-height:240px;
+}
+.lens-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--accent);box-shadow:0 0 12px var(--accent-glow);
+}
+.lens-card .tag{
+  display:inline-block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin-bottom:14px;
+}
+.lens-card h4{
+  margin:0 0 10px;font-size:16px;letter-spacing:-.01em;line-height:1.25;color:#fff;font-weight:600;
+}
+.lens-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.55;}
+
+/* APPROACH FLOW */
+.approach-flow{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+.flow-card{
+  position:relative;
+  padding:24px;
+  border:1px solid rgba(255,255,255,.11);
+  background:rgba(5,8,14,.6);
+  border-radius:22px;
+  overflow:hidden;
+  min-height:220px;
+}
+.flow-card::after{
+  content:'';position:absolute;left:24px;right:24px;bottom:0;
+  height:3px;background:var(--accent);
+  box-shadow:0 0 18px var(--accent-glow);border-radius:999px;
+}
+.flow-card .num{
+  width:36px;height:36px;border-radius:12px;
+  background:var(--accent);color:#071018;
+  font-weight:800;font-size:14px;
+  display:grid;place-items:center;margin-bottom:18px;
+}
+.flow-card .label{
+  font-size:11px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:10px;
+}
+.flow-card h4{
+  margin:0 0 10px;font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1.2;color:#fff;
+}
+.flow-card p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.55;}
+
+/* CORE INSIGHT */
+.insight-panel{
+  text-align:center;
+  border:1px solid rgba(181,255,109,.25);
+  background:
+    linear-gradient(135deg, rgba(181,255,109,.10), rgba(70,230,255,.06) 60%, rgba(154,124,255,.07));
+  border-radius:36px;
+  padding:clamp(40px,5vw,72px) clamp(28px,4vw,56px);
+  position:relative;overflow:hidden;
+}
+.insight-panel::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 0%, rgba(181,255,109,.15), transparent 50%);
+}
+.insight-panel .label{
+  display:inline-block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--lime);font-weight:700;margin-bottom:18px;
+}
+.insight-panel h3{
+  margin:0 0 18px;font-size:clamp(28px,4vw,52px);
+  letter-spacing:-.045em;line-height:1.1;font-weight:700;color:#fff;
+}
+.insight-panel p{
+  margin:0 auto;max-width:720px;color:var(--soft);font-size:17px;line-height:1.6;
+}
+
+/* TRADEOFFS */
+.tradeoff-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+.option{
+  position:relative;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(5,8,14,.6);
+  border-radius:24px;padding:24px;
+  min-height:280px;
+}
+.option.chosen{
+  border-color:rgba(181,255,109,.4);
+  background:linear-gradient(180deg, rgba(181,255,109,.06), rgba(5,8,14,.6) 70%);
+  box-shadow:0 0 0 1px rgba(181,255,109,.2), 0 24px 60px rgba(181,255,109,.08);
+}
+.option .verdict{
+  display:inline-block;padding:5px 10px;border-radius:999px;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  background:rgba(255,255,255,.05);color:var(--muted);
+  border:1px solid var(--stroke);margin-bottom:14px;
+}
+.option.too-shallow .verdict{color:var(--rose);border-color:rgba(255,107,168,.3);background:rgba(255,107,168,.06);}
+.option.too-narrow .verdict{color:var(--amber);border-color:rgba(255,205,107,.3);background:rgba(255,205,107,.06);}
+.option.chosen .verdict{color:var(--lime);border-color:rgba(181,255,109,.4);background:rgba(181,255,109,.1);}
+.option h4{margin:0 0 12px;color:#fff;font-size:17px;letter-spacing:-.015em;font-weight:600;line-height:1.25;}
+.option p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.55;}
+.option.chosen::after{
+  content:'';position:absolute;left:24px;right:24px;bottom:0;height:3px;
+  background:var(--lime);box-shadow:0 0 18px rgba(181,255,109,.6);border-radius:999px;
+}
+.rationale{
+  margin-top:18px;
+  border:1px solid rgba(70,230,255,.22);
+  background:linear-gradient(90deg, rgba(70,230,255,.08), rgba(154,124,255,.06));
+  border-radius:22px;padding:20px 22px;
+}
+.rationale b{display:block;color:#fff;font-size:14px;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase;font-size:11px;letter-spacing:.18em;color:var(--cyan);}
+.rationale p{margin:0;color:var(--soft);font-size:15px;line-height:1.55;}
+
+/* PRINCIPLES */
+.principles-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.principle{
+  position:relative;
+  padding:24px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.035);
+  border-radius:22px;
+  min-height:180px;
+}
+.principle .ico{
+  width:40px;height:40px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.04);border:1px solid var(--stroke);
+  margin-bottom:16px;
+}
+.principle h4{
+  margin:0 0 10px;color:#fff;font-size:16px;font-weight:600;letter-spacing:-.015em;line-height:1.2;
+}
+.principle p{margin:0;color:var(--muted);font-size:13px;line-height:1.55;}
+
+/* MENTAL MODELS */
+.models-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.model{
+  position:relative;
+  padding:26px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(5,8,14,.62);
+  border-radius:24px;
+  display:flex;flex-direction:column;
+  min-height:380px;
+}
+.model::after{
+  content:'';position:absolute;left:26px;right:26px;bottom:0;height:3px;
+  background:var(--accent);box-shadow:0 0 18px var(--accent-glow);border-radius:999px;
+}
+.model .ico-wrap{
+  width:48px;height:48px;border-radius:14px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.04);border:1px solid var(--stroke);
+  margin-bottom:18px;
+}
+.model h4{
+  margin:0 0 6px;color:#fff;font-size:20px;font-weight:700;letter-spacing:-.02em;
+}
+.model .quote{
+  font-size:13px;color:var(--accent);font-style:italic;margin-bottom:14px;
+}
+.model .row{margin-bottom:14px;}
+.model .row:last-child{margin-bottom:0;}
+.model .row b{
+  display:block;font-size:10.5px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:6px;
+}
+.model .row p{margin:0;color:var(--soft);font-size:13.5px;line-height:1.55;}
+
+/* RESULTS */
+.results-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;
+}
+.result-card{
+  padding:24px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.035);
+  border-radius:22px;
+  position:relative;overflow:hidden;
+  min-height:200px;
+}
+.result-card .tag{
+  font-size:10.5px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  margin-bottom:14px;display:block;
+}
+.result-card h4{
+  margin:0 0 10px;color:#fff;font-size:17px;font-weight:600;letter-spacing:-.015em;line-height:1.2;
+}
+.result-card p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.55;}
+.metric-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  padding:24px;border-radius:24px;
+  border:1px solid rgba(181,255,109,.25);
+  background:linear-gradient(90deg, rgba(181,255,109,.08), rgba(70,230,255,.05));
+}
+.big-metric{text-align:center;}
+.big-metric .num{
+  font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-.04em;
+  background:linear-gradient(105deg, #fff, var(--lime) 50%, var(--cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:6px;
+}
+.big-metric .lbl{font-size:12px;color:var(--soft);letter-spacing:.04em;line-height:1.4;}
+
+/* SIGNALS */
+.signals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.signal{
+  padding:28px;border-radius:24px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,.04);
+}
+.signal .num{
+  font-size:10.5px;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  margin-bottom:14px;display:block;
+}
+.signal h4{
+  margin:0 0 10px;color:#fff;font-size:18px;font-weight:600;letter-spacing:-.015em;line-height:1.2;
+}
+.signal p{margin:0;color:var(--soft);font-size:14px;line-height:1.55;}
+
+/* CTA FOOTER */
+.cta-footer{
+  text-align:center;padding:80px 0 60px;
+}
+.cta-footer .label{display:block;color:var(--muted);font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;}
+.cta-footer h2{
+  font-size:clamp(32px,5vw,56px);letter-spacing:-.04em;line-height:1.05;margin:0 0 28px;
+}
+.cta-buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  height:46px;padding:0 22px;border-radius:999px;
+  background:var(--lime);color:#0a0d14;
+  font-weight:600;font-size:14.5px;
+  transition:transform .2s ease, box-shadow .25s ease;
+  box-shadow:0 10px 30px rgba(181,255,109,.35);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(181,255,109,.55);}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;
+  height:46px;padding:0 22px;border-radius:999px;
+  border:1px solid var(--stroke);background:rgba(255,255,255,.04);
+  color:#fff;font-weight:500;font-size:14.5px;
+  transition:background .25s ease, border-color .25s ease;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);}
+.footer-end{
+  text-align:center;padding-bottom:48px;
+  color:var(--muted);font-size:12.5px;letter-spacing:.02em;
+}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .lens-grid{grid-template-columns:repeat(2,1fr);}
+  .approach-flow,.tradeoff-grid,.signals-grid{grid-template-columns:1fr;}
+  .principles-grid{grid-template-columns:repeat(2,1fr);}
+  .models-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-metrics{grid-template-columns:repeat(2,1fr);}
+  .results-grid{grid-template-columns:repeat(2,1fr);}
+  .metric-strip{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:640px){
+  .container{width:min(var(--max), calc(100% - 32px));}
+  .lens-grid,.principles-grid,.models-grid,.results-grid{grid-template-columns:1fr;}
+  .metric-strip{grid-template-columns:1fr 1fr;}
+  .nav-mid{display:none;}
+  .hero{padding:120px 0 40px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html#work" class="back-link">
+      <span class="arrow">←</span> Back to all work
+    </a>
+    <div class="nav-mid">
+      QA Run <span class="tag">Case Study</span>
+    </div>
+    <a href="https://baladesigns.framer.website/qarun" target="_blank" rel="noopener" class="live-link">View live demo →</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag"><span class="d"></span>DevOps · QA SaaS · 2023</div>
+    <h1 class="hero-title"><span class="gradient-text">QA Run</span><br/>From API chaos<br/>to calm confidence.</h1>
+    <p class="hero-sub">Reframing QA Run from a tooling problem into a systems decision — a redesign that aligned the product to how testers actually reason.</p>
+    <div class="hero-meta">
+      <span class="meta-pill">Lead UI Designer</span>
+      <span class="meta-pill">B2B SaaS · QA platform</span>
+      <span class="meta-pill">Strategy + UX + System redesign</span>
+    </div>
+    <div class="hero-metrics">
+      <div class="hero-metric reveal" style="--accent:var(--lime);--accent-glow:rgba(181,255,109,.6)">
+        <div class="num">70<span class="unit">%</span></div>
+        <div class="lbl">Less repetitive data entry</div>
+      </div>
+      <div class="hero-metric reveal" style="--accent:var(--cyan);--accent-glow:rgba(70,230,255,.6);transition-delay:.08s">
+        <div class="num">50<span class="unit">%</span></div>
+        <div class="lbl">Fewer misconfigured test cases</div>
+      </div>
+      <div class="hero-metric reveal" style="--accent:var(--violet);--accent-glow:rgba(154,124,255,.6);transition-delay:.16s">
+        <div class="num">5</div>
+        <div class="lbl">Clear mental models in the final system</div>
+      </div>
+      <div class="hero-metric reveal" style="--accent:var(--amber);--accent-glow:rgba(255,205,107,.6);transition-delay:.24s">
+        <div class="num">1</div>
+        <div class="lbl">Core shift — confidence over configuration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SITUATION -->
+<section class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="panel-inner">
+        <div class="section-eyebrow">01 The Situation</div>
+        <h2 class="lens-headline">The real risk was not visual friction. It was <em>product trust.</em></h2>
+        <div class="lens-grid">
+          <div class="lens-card" style="--accent:var(--rose);--accent-glow:rgba(255,107,168,.5)">
+            <span class="tag">User side</span>
+            <h4>What was breaking for testers?</h4>
+            <p>QA professionals re-entered data, validated through logs, and stitched fragmented test steps. The workflow demanded too much memory and too little confidence.</p>
+          </div>
+          <div class="lens-card" style="--accent:var(--amber);--accent-glow:rgba(255,205,107,.5)">
+            <span class="tag">Business side</span>
+            <h4>Why did it matter to the product?</h4>
+            <p>Slow setup and avoidable errors reduced testing speed, coverage, and release confidence. The business problem wasn't friction — it was lower trust in the platform.</p>
+          </div>
+          <div class="lens-card" style="--accent:var(--cyan);--accent-glow:rgba(70,230,255,.5)">
+            <span class="tag">Technical reality</span>
+            <h4>What constraint did I respect?</h4>
+            <p>The platform still needed to support complex API validation. I couldn't oversimplify for non-technical users and accidentally remove power for advanced workflows.</p>
+          </div>
+          <div class="lens-card" style="--accent:var(--violet);--accent-glow:rgba(154,124,255,.5)">
+            <span class="tag">USP blocker</span>
+            <h4>What was actually blocking it?</h4>
+            <p>The product was powerful, but it didn't translate that power into a usable, reusable, human-centered testing system. The USP was buried behind cognitive overhead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="section-eyebrow">02 Task & Approach</div>
+          <h2>Make the platform easier to trust without stripping technical capability.</h2>
+          <p>I approached that by identifying the root cause, reframing the design question, and defining decision criteria <em>before</em> moving into solution design.</p>
+        </div>
+        <div class="approach-flow">
+          <div class="flow-card reveal" style="--accent:var(--rose);--accent-glow:rgba(255,107,168,.6)">
+            <div class="num">1</div>
+            <div class="label">Root cause</div>
+            <h4>Identify the actual failure</h4>
+            <p>The platform looked like a tooling problem — too many fields, too much manual work, too many logs. Underneath that was cognitive overload disguised as functionality. Users carried too much of the system in their heads.</p>
+          </div>
+          <div class="flow-card reveal" style="--accent:var(--cyan);--accent-glow:rgba(70,230,255,.6);transition-delay:.1s">
+            <div class="num">2</div>
+            <div class="label">Reframe</div>
+            <h4>Change the design question</h4>
+            <p>Instead of <em>"How do we add more API features?"</em> I reframed the work around <em>"How do QA testers think when validating APIs?"</em> — turning a UI cleanup into a workflow redesign.</p>
+          </div>
+          <div class="flow-card reveal" style="--accent:var(--lime);--accent-glow:rgba(181,255,109,.6);transition-delay:.2s">
+            <div class="num">3</div>
+            <div class="label">Decision criteria</div>
+            <h4>Choose with tradeoffs in mind</h4>
+            <p>Every concept had to reduce memory load, improve reuse, preserve technical depth, and increase release confidence. If a solution failed one of those lenses, it didn't survive.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE INSIGHT -->
+<section class="section">
+  <div class="container">
+    <div class="insight-panel reveal">
+      <span class="label">Core insight</span>
+      <h3 class="gradient-text">The product had to match how testers reason.</h3>
+      <p>Testers think in <b style="color:#fff">flows, not endpoints</b>. They reuse data patterns, not values. They validate through visual confirmation, not logs. Once that landed, the problem became architectural — reusable data, visible sequences, confidence-first dashboards, and reporting stakeholders could act on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRADEOFFS -->
+<section class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="section-eyebrow">03 Tradeoffs & Decision Rationale</div>
+          <h2>Three paths. One that scaled trust.</h2>
+          <p>I considered lighter-weight alternatives, but each failed either the user, the business, or the long-term product system.</p>
+        </div>
+        <div class="tradeoff-grid">
+          <div class="option too-shallow reveal">
+            <span class="verdict">Too shallow</span>
+            <h4>Option A · Improve form usability</h4>
+            <p>Reduce visual clutter, but the fragmented mental model stays. Users still re-enter data, move between disconnected steps, and validate through effort instead of clarity.</p>
+          </div>
+          <div class="option too-narrow reveal" style="transition-delay:.1s">
+            <span class="verdict">Too narrow</span>
+            <h4>Option B · Optimize for advanced control</h4>
+            <p>Helps power users, but makes the product more intimidating for semi-technical QA teams. Optimizes for control at the expense of comprehension.</p>
+          </div>
+          <div class="option chosen reveal" style="transition-delay:.2s">
+            <span class="verdict">Chosen — scales trust</span>
+            <h4>Option C · Redesign the workflow model</h4>
+            <p>Reusable data, visible flows, validation context, and stakeholder-ready reporting. Serves user, business, product roadmap, and system architecture at once.</p>
+          </div>
+        </div>
+        <div class="rationale reveal">
+          <b>Why this call</b>
+          <p>The workflow redesign created value in four directions at once: easier task completion for users, clearer signals for stakeholders, better throughput for the business, and a more scalable system for the product team. Lighter options only solved for one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="section-eyebrow">04 Decision Principles</div>
+          <h2>The rules every design call answered to.</h2>
+          <p>These principles aligned product decisions, design decisions, and technical reality.</p>
+        </div>
+        <div class="principles-grid">
+          <div class="principle reveal" style="--accent:var(--cyan)">
+            <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M2 12c2.5-5 6-7 10-7s7.5 2 10 7c-2.5 5-6 7-10 7s-7.5-2-10-7Z"/></svg></div>
+            <h4>Reduce memory, increase visibility</h4>
+            <p>Move critical state out of the user's head and into the interface.</p>
+          </div>
+          <div class="principle reveal" style="--accent:var(--violet);transition-delay:.08s">
+            <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><path d="M17 13v3a2 2 0 0 0 2 2h2"/></svg></div>
+            <h4>Reuse before recreate</h4>
+            <p>Treat recurring test data as a reusable asset, not a repeated task.</p>
+          </div>
+          <div class="principle reveal" style="--accent:var(--lime);transition-delay:.16s">
+            <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="1.6"><circle cx="5" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h3M14 12h3M5 8v2M12 14v2"/></svg></div>
+            <h4>Flows over fragments</h4>
+            <p>Design for test journeys and sequences, not disconnected API calls.</p>
+          </div>
+          <div class="principle reveal" style="--accent:var(--amber);transition-delay:.24s">
+            <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h4>Confidence over configuration</h4>
+            <p>Help users decide faster instead of drowning them in setup detail.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 MENTAL MODELS -->
+<section class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="section-eyebrow">05 The System — Not Screens</div>
+          <h2>Five mental models. One legible product.</h2>
+          <p>The product architecture <em>became</em> the UX. Every region of the platform now maps to a single question a tester or stakeholder actually asks.</p>
+        </div>
+        <div class="models-grid">
+          <div class="model reveal" style="--accent:var(--cyan);--accent-glow:rgba(70,230,255,.6)">
+            <div class="ico-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.6"><rect x="3" y="3" width="8" height="10" rx="1.5"/><rect x="13" y="3" width="8" height="6" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="15" width="8" height="6" rx="1.5"/></svg></div>
+            <h4>Dashboard</h4>
+            <div class="quote">"Am I safe to release?"</div>
+            <div class="row"><b>Why this exists</b><p>QA leads don't want details first. They want assurance.</p></div>
+            <div class="row"><b>Design choice</b><p>High-level project health, recent executions, failure indicators.</p></div>
+            <div class="row"><b>UX impact</b><p>Immediate situational awareness before diving deeper.</p></div>
+          </div>
+          <div class="model reveal" style="--accent:var(--violet);--accent-glow:rgba(154,124,255,.6);transition-delay:.08s">
+            <div class="ico-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M8 6h6M8 18h6M14 12h-4"/></svg></div>
+            <h4>Test Cases</h4>
+            <div class="quote">"What behavior am I validating?"</div>
+            <div class="row"><b>Why this exists</b><p>APIs don't live in isolation. Neither should tests.</p></div>
+            <div class="row"><b>Design choice</b><p>Modular test blocks, conditional sequences (login → action → logout), reusable flows.</p></div>
+            <div class="row"><b>UX impact</b><p>Tests reflect real user journeys, not isolated endpoints.</p></div>
+          </div>
+          <div class="model reveal" style="--accent:var(--lime);--accent-glow:rgba(181,255,109,.6);transition-delay:.16s">
+            <div class="ico-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="1.6"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+            <h4>Data Library</h4>
+            <div class="quote">"I shouldn't retype what I already know."</div>
+            <div class="row"><b>Why this exists</b><p>Manual entry was the biggest time sink and error source.</p></div>
+            <div class="row"><b>Design choice</b><p>Centralized variables, reusable datasets, human-readable naming.</p></div>
+            <div class="row"><b>UX impact</b><p>Less setup. Fewer mistakes. Higher confidence.</p></div>
+          </div>
+          <div class="model reveal" style="--accent:var(--amber);--accent-glow:rgba(255,205,107,.6);transition-delay:.24s">
+            <div class="ico-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6"><polygon points="6,4 18,12 6,20"/></svg></div>
+            <h4>Execution View</h4>
+            <div class="quote">"Show me what happened."</div>
+            <div class="row"><b>Why this exists</b><p>Logs slow people down. Visuals speed understanding.</p></div>
+            <div class="row"><b>Design choice</b><p>Response previews, status indicators, expandable logs only when needed.</p></div>
+            <div class="row"><b>UX impact</b><p>Faster validation, less cognitive fatigue.</p></div>
+          </div>
+          <div class="model reveal" style="--accent:var(--rose);--accent-glow:rgba(255,107,168,.6);transition-delay:.32s">
+            <div class="ico-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6"><path d="M4 20V8M10 20V4M16 20v-8M22 20V12"/></svg></div>
+            <h4>Reports</h4>
+            <div class="quote">"Help me communicate, not decode."</div>
+            <div class="row"><b>Why this exists</b><p>QA doesn't stop at testing — it ends with reporting.</p></div>
+            <div class="row"><b>Design choice</b><p>Aggregated results, export-ready summaries, alert-based failures.</p></div>
+            <div class="row"><b>UX impact</b><p>Clear communication with stakeholders, instantly.</p></div>
+          </div>
+          <div class="model reveal" style="--accent:var(--blue);--accent-glow:rgba(109,168,255,.5);transition-delay:.4s;background:linear-gradient(180deg, rgba(70,230,255,.06), rgba(5,8,14,.62));">
+            <div class="ico-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.6"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/></svg></div>
+            <h4>The connective tissue</h4>
+            <div class="quote">Architecture &gt; aesthetics</div>
+            <div class="row"><b>What changed</b><p>The five models aren't isolated screens — they're a closed loop. Test → execute → report → assure.</p></div>
+            <div class="row"><b>Why it matters</b><p>Future capability slots in without rebuilding context. The system can grow.</p></div>
+            <div class="row"><b>Outcome</b><p>One unified test → execution → reporting loop.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="section-eyebrow">06 Results & Impact</div>
+          <h2>Calmer for testers. Sharper for stakeholders.</h2>
+          <p>The redesign improved execution speed, reduced preventable setup errors, and made results easier to understand and communicate.</p>
+        </div>
+        <div class="results-grid">
+          <div class="result-card reveal" style="--accent:var(--lime)">
+            <span class="tag">User impact</span>
+            <h4>Calmer, faster, clearer</h4>
+            <p>Testers spent less time configuring and more time validating. Lower memory load. Easier-to-understand outcomes.</p>
+          </div>
+          <div class="result-card reveal" style="--accent:var(--cyan);transition-delay:.08s">
+            <span class="tag">Business impact</span>
+            <h4>More speed, fewer avoidable errors</h4>
+            <p>Reducing repetitive setup and misconfiguration improved throughput, increased confidence, supported better release decisions.</p>
+          </div>
+          <div class="result-card reveal" style="--accent:var(--violet);transition-delay:.16s">
+            <span class="tag">Stakeholder impact</span>
+            <h4>Results easier to act on</h4>
+            <p>Clear summaries and health signals helped stakeholders understand risk without decoding raw logs.</p>
+          </div>
+          <div class="result-card reveal" style="--accent:var(--amber);transition-delay:.24s">
+            <span class="tag">Product impact</span>
+            <h4>A more scalable structure</h4>
+            <p>Modular architecture that supports future growth — better than a form-by-form cleanup ever could.</p>
+          </div>
+        </div>
+        <div class="metric-strip reveal">
+          <div class="big-metric"><div class="num">70%</div><div class="lbl">reduction in repetitive data entry</div></div>
+          <div class="big-metric"><div class="num">50%</div><div class="lbl">fewer misconfigured test cases</div></div>
+          <div class="big-metric"><div class="num">1</div><div class="lbl">unified test → execution → reporting loop</div></div>
+          <div class="big-metric"><div class="num">5</div><div class="lbl">mental models that made the system legible</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNALS -->
+<section class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="section-eyebrow">07 Why this is a senior-level case study</div>
+          <h2>How I work through ambiguity.</h2>
+          <p>This case study shows how I align decisions to product strategy, weigh tradeoffs, and connect design actions to measurable outcomes.</p>
+        </div>
+        <div class="signals-grid">
+          <div class="signal reveal" style="--accent:var(--cyan)">
+            <span class="num">Signal 01 · Situation clarity</span>
+            <h4>I identified the real issue beneath the surface.</h4>
+            <p>Instead of redesigning symptoms — that's the difference between screen design and product thinking.</p>
+          </div>
+          <div class="signal reveal" style="--accent:var(--violet);transition-delay:.1s">
+            <span class="num">Signal 02 · Tradeoff quality</span>
+            <h4>I can explain why one solution beats another.</h4>
+            <p>Which tradeoffs I accepted, and why the chosen direction was more durable across user, business, and technical dimensions.</p>
+          </div>
+          <div class="signal reveal" style="--accent:var(--lime);transition-delay:.2s">
+            <span class="num">Signal 03 · Action to result</span>
+            <h4>The output wasn't an isolated UI.</h4>
+            <p>It was a product architecture built around mental models, reuse, and confidence at scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FOOTER -->
+<section class="cta-footer">
+  <div class="container">
+    <span class="label">Like the way I think?</span>
+    <h2 class="gradient-text">Let's design something that scales trust.</h2>
+    <div class="cta-buttons">
+      <a class="btn-primary" href="mailto:sbalamurugan00@gmail.com">Email me</a>
+      <a class="btn-ghost" href="index.html#work">← See more work</a>
+    </div>
+  </div>
+</section>
+
+<div class="footer-end container">© 2026 Balamurugan Sivamayam · QA Run case study</div>
+
+</main>
+
+<script>
+/* CURSOR */
+(() => {
+  const cursor = document.querySelector('.cursor');
+  if (!cursor || matchMedia('(hover:none)').matches) return;
+  let tx=0,ty=0,cx=0,cy=0;
+  window.addEventListener('mousemove', e => { tx=e.clientX; ty=e.clientY; });
+  const loop = () => {
+    cx += (tx-cx)*0.18; cy += (ty-cy)*0.18;
+    cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  };
+  loop();
+  const hover = 'a,button,.option,.flow-card,.model,.principle,.result-card,.signal';
+  document.addEventListener('mouseover', e => { if (e.target.closest(hover)) cursor.classList.add('is-hover'); });
+  document.addEventListener('mouseout',  e => { if (e.target.closest(hover)) cursor.classList.remove('is-hover'); });
+})();
+
+/* NAV SCROLL STATE */
+window.addEventListener('scroll', () => {
+  document.querySelector('.nav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive:true });
+
+/* REVEAL ON SCROLL */
+(() => {
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold:0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>

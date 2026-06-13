@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Bala — Senior Product Designer. AI-powered B2B systems. Complexity → clarity."/>
+<meta name="description" content="Bala, Senior Product Designer. AI-powered B2B systems. Complexity → clarity."/>
 <title>Bala · Product Designer</title>
-<link rel="icon" type="image/svg+xml" href="./assets/nav-logo.svg"/>
-<link rel="icon" type="image/png" href="./assets/nav-logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -70,9 +68,9 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 .nav-inner{display:flex;align-items:center;justify-content:space-between;}
 .brand{font-size:18px;font-weight:800;letter-spacing:-.03em;}
 .nav-links{display:flex;gap:26px;list-style:none;margin:0;padding:0;}
-.nav-a{font-size:12px;color:var(--soft);font-weight:500;position:relative;transition:color .2s;}
-.nav-a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--cyan);transition:width .25s;}
-.nav-a:hover{color:#fff;}.nav-a:hover::after,.nav-a.on::after{width:100%;}.nav-a.on{color:#fff;}
+.nav-a{font-size:12px;color:var(--soft);font-weight:500;position:relative;transition:color .2s;text-decoration:none;}
+.nav-a:hover{color:#fff;}
+.nav-a.on{background:linear-gradient(90deg,#9a7cff,#cd8848);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .nav-right{display:flex;align-items:center;gap:10px;}
 .avail{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--soft);letter-spacing:.06em;text-transform:uppercase;}
 .avail-dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s ease-in-out infinite;}
@@ -286,7 +284,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 .tl-role{font-size:10px;color:var(--soft);margin:1px 0 0;}
 .tl-date{font-size:9px;color:var(--muted);margin:2px 0 0;letter-spacing:.03em;}
 
-/* ═══ SHARED CASE STUDY TEMPLATE (tcs-*) — mirrors IndiGo visual language ═══ */
+/* ═══ SHARED CASE STUDY TEMPLATE (tcs-*), mirrors IndiGo visual language ═══ */
 .tcs-outer{width:100%;background:#05060a;overflow-x:hidden;}
 .tcs-frame{width:1440px;background:#05060a;margin:0 auto;font-family:'Google Sans','DM Sans','Inter',sans-serif;}
 .tcs-nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 60px 0 40px;background:rgba(5,6,10,.88);border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:10;box-sizing:border-box;}
@@ -611,7 +609,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 .hp-desg-area{position:absolute;top:310px;left:100px;width:563px;height:295px;overflow:hidden;z-index:5;}
 .hp-desg-inner{display:block;}
 .hp-desg-text{margin:0;font-family:var(--gsd);font-weight:600;font-size:80px;line-height:90px;color:#fff;white-space:normal;word-break:break-word;display:block;transition:opacity .45s ease;}
-.hp-desg-cursor{display:none;}/* cursor removed — clean look */
+.hp-desg-cursor{display:none;}/* cursor removed, clean look */
 .hp-pw-area{position:absolute;top:232px;left:704px;z-index:5;}
 .hp-pw-area .pw{opacity:0;transform:translateY(16px) scale(.98);transition:opacity .6s ease,transform .6s cubic-bezier(.16,.9,.3,1);}
 .hp-pw-area .pw.in{opacity:1;transform:none;}
@@ -619,8 +617,9 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 .hp-card{position:absolute;cursor:pointer;z-index:5;}
 .hp-card-inner{transition:transform .3s ease;}
 .hp-card:hover .hp-card-inner{transform:translateY(-6px);}
-.hp-card-img-wrap{position:relative;width:585px;height:371px;border-radius:30px;overflow:hidden;border:2px solid #9b7dfc;background:#181818;}
-.hp-card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.hp-card-img-wrap{position:relative;width:585px;height:371px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#181818;transition:box-shadow .35s ease,border-color .35s ease;}
+.hp-card:hover .hp-card-img-wrap{border-color:rgba(155,125,252,.15);box-shadow:0 0 0 1px rgba(155,125,252,.12),0 8px 48px rgba(155,125,252,.35),0 0 90px rgba(155,125,252,.18);}
+.hp-card-img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s ease;}
 .hp-card:hover .hp-card-img{transform:scale(1.04);}
 .hp-card-grad{position:absolute;inset:0;background:linear-gradient(166.18deg,rgba(0,0,0,0) 13.678%,rgb(0,0,0) 161.3%);pointer-events:none;}
 .hp-card-hover-ovl{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:24px;opacity:0;transition:opacity .3s ease;}
@@ -635,12 +634,12 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 .hp-logo{display:none;}/* individual logos replaced by single Figma screenshot */
 .hp-nums-section{position:absolute;top:2834px;left:50%;transform:translateX(-50%);width:1078px;display:flex;flex-direction:column;align-items:center;gap:80px;z-index:5;}
 .hp-nums-h{margin:0;font-family:var(--gsd);font-weight:500;font-size:56px;line-height:60px;color:#fff;text-align:center;}
-.hp-stats-row{display:flex;gap:120px;align-items:flex-end;}
-.hp-stat-col{display:flex;flex-direction:column;gap:8px;}
-.hp-stat-num-wrap{margin:0;font-family:'Google Sans',sans-serif;font-weight:600;font-size:0;line-height:0;-webkit-background-clip:text;background-clip:text;color:transparent;}
-.hp-stat-num-big{font-size:80px;line-height:90px;}
-.hp-stat-num-sup{font-size:40px;line-height:90px;}
-.hp-stat-lbl{margin:0;font-family:var(--gsf);font-weight:400;font-size:16px;color:#fff;}
+.hp-stats-row{display:flex;justify-content:space-between;align-items:flex-start;width:100%;}
+.hp-stat-col{display:flex;flex-direction:column;gap:12px;flex:1;}
+.hp-stat-num-wrap{margin:0;font-family:'Google Sans',sans-serif;font-weight:600;font-size:80px;line-height:1;-webkit-background-clip:text;background-clip:text;color:transparent;display:flex;align-items:baseline;}
+.hp-stat-num-big{font-size:80px;line-height:1;}
+.hp-stat-num-sup{font-size:36px;line-height:1;position:relative;top:-10px;margin-left:2px;}
+.hp-stat-lbl{margin:0;font-family:var(--gsf);font-weight:400;font-size:16px;color:#bcbcbc;}
 .hp-s0{background-image:linear-gradient(-76.84deg,#fff 49.134%,rgb(74,135,240) 97.439%);}
 .hp-s1{background-image:linear-gradient(-79.63deg,#fff 49.134%,rgb(74,135,240) 97.439%);}
 .hp-s2{background-image:linear-gradient(-71.35deg,#fff 49.134%,rgb(74,135,240) 97.439%);}
@@ -706,7 +705,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE — Tablet (≤1024px) + Mobile (≤768px)
+   RESPONSIVE, Tablet (≤1024px) + Mobile (≤768px)
    All sections: Landing page, IndiGo (igs-*), Case studies (tcs-*)
    ═══════════════════════════════════════════════════════════════ */
 
@@ -743,7 +742,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     padding-bottom:60px;
   }
 
-  /* NAV — mobile */
+  /* NAV, mobile */
   .hp-nav {
     position:fixed !important;
     top:0 !important; left:0 !important; right:0 !important;
@@ -772,7 +771,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     height:32px !important;
   }
 
-  /* HERO — stack: name → designation → prompt window */
+  /* HERO, stack: name → designation → prompt window */
   .hp-name {
     position:relative !important;
     top:auto !important; left:auto !important;
@@ -819,7 +818,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     box-sizing:border-box;
   }
 
-  /* PROJECT CARDS — single column */
+  /* PROJECT CARDS, single column */
   .hp-card {
     position:relative !important;
     top:auto !important; left:auto !important;
@@ -1201,8 +1200,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <nav class="nav cs-nav" id="cs-nav">
   <div class="w nav-inner">
     <button class="cs-back" onclick="showPortfolio()">← Back to all work</button>
-    <div class="cs-nav-title" id="cs-nav-title">Case Study <span class="cs-nav-tag">CASE STUDY</span></div>
-    <span class="cs-live">View prototype →</span>
+    <div id="cs-nav-title" style="display:none;"></div>
   </div>
 </nav>
 
@@ -1210,17 +1208,18 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <nav class="nav" id="main-nav" style="height:59px;padding:0 60px;">
   <div class="nav-inner" style="height:100%;display:flex;align-items:center;justify-content:space-between;">
     <a href="#top" style="display:block;width:26px;height:36px;flex-shrink:0;">
-      <img src="./assets/nav-logo.png" alt="Logo" style="width:26px;height:36px;object-fit:contain;display:block;">
+      <svg width="26" height="36" viewBox="0 0 26 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:26px;height:36px;">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.248365 0.251795C0.00465235 0.498769 0 0.53518 0 2.20513C0 3.87508 0.00465235 3.91149 0.248365 4.15846C0.407323 4.31968 0.622955 4.41026 0.8478 4.41026H8.87683C18.0198 4.41026 17.8492 4.40021 18.9613 5.00297C19.6737 5.38903 20.5576 6.30574 20.9208 7.03498C21.0062 7.2065 21.1289 7.57576 21.2288 7.89699C21.3471 8.27712 21.4019 8.67388 21.405 9.07246C21.4101 9.75017 21.2604 10.4199 20.9673 11.029L20.4437 12.1177C20.3666 12.278 20.187 12.7103 20.0418 13.0652C19.9207 13.3613 20.046 13.7011 20.3305 13.8412C20.5036 13.9265 20.7017 14.0224 20.8911 14.1104C21.3918 14.3431 22.1195 14.7249 22.5081 14.959C22.7213 15.0875 23.0056 15.2898 23.2188 15.4465C23.3755 15.5615 23.7434 15.5113 23.8249 15.3333L25.2412 12.1177C25.4422 11.6793 25.5772 11.2373 25.6965 10.7692C25.8087 10.3287 25.8693 9.78262 25.8988 9.33333C26.0293 7.34848 25.3016 5.70626 24.52 4.43508C23.2394 2.352 21.2211 0.859078 18.8671 0.253642C18.212 0.085201 17.5389 0 16.8631 0H0.847801C0.622955 0 0.407323 0.0905768 0.248365 0.251795Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.46304 7.85947C4.20704 8.03434 3.36705 8.40121 2.34961 9.21916C1.28412 10.0758 0.537198 11.2884 0.20193 12.7058C-0.0523033 13.7811 -0.0522031 14.4911 0.202232 15.5119C0.759968 17.7488 2.21749 19.3904 4.31064 20.1389C4.83921 20.3279 5.39498 20.427 5.95546 20.4321L11.0778 20.479C16.8939 20.5321 17.0637 20.5393 17.7116 20.7602C19.5986 21.4035 20.9893 23.0363 21.4085 25.1008C21.5781 25.9362 21.5784 26.0253 21.4131 26.8782C21.3174 27.372 21.0925 28.0838 20.9133 28.4598C20.472 29.3862 19.3973 30.4879 18.5136 30.9202C17.1832 31.571 17.4495 31.5539 8.57332 31.5539H0.847803C0.622956 31.5539 0.407323 31.6445 0.248365 31.8057C0.00465235 32.0527 0 32.0891 0 33.7591C0 35.429 0.00465235 35.4654 0.248365 35.7124C0.407323 35.8736 0.622956 35.9642 0.847802 35.9642L16.4006 35.9639C16.9642 35.9639 17.5257 35.8957 18.0733 35.7607L18.2607 35.7146C22.2329 34.7353 25.03 31.6854 25.7477 27.5511C25.9494 26.3889 25.938 25.5565 25.7029 24.3056C25.298 22.1519 24.6013 20.75 23.1779 19.2258C21.8422 17.7956 20.2518 16.8225 18.4859 16.3551C17.6952 16.1457 17.359 16.1318 11.7354 16.0751C5.24654 16.0097 5.55166 16.0408 4.93838 15.3836C3.99166 14.3692 4.45763 12.7268 5.80741 12.3204C6.22139 12.1957 7.23862 12.1693 11.628 12.1693C14.7719 12.1693 17.0872 12.1285 17.29 12.0695C18.1716 11.8132 18.7331 11.1251 18.7974 10.2218C18.8697 9.2088 18.4958 8.48654 17.6662 8.03659C17.2514 7.81157 17.2173 7.81024 11.6342 7.79618C8.54611 7.78829 5.76907 7.8168 5.46304 7.85947Z" fill="white"/>
+        <path d="M0 26.2051C0 24.5352 0.00465235 24.4988 0.248365 24.2518C0.407323 24.0906 0.622955 24 0.8478 24H8.60823C14.7386 24 16.8213 24.0309 17.1354 24.1263C17.7782 24.3215 18.4658 25.0595 18.5975 25.6956C18.8374 26.8539 18.2667 27.9201 17.2087 28.2901C16.9568 28.3781 14.6757 28.4103 8.68066 28.4103H0.8478C0.622955 28.4103 0.407323 28.3197 0.248365 28.1585C0.00465235 27.9115 0 27.8751 0 26.2051Z" fill="white"/>
+      </svg>
     </a>
     <ul class="nav-links" style="display:flex;gap:26px;list-style:none;margin:0;padding:0;">
-      <li><a href="#work" class="nav-a" data-s="work" style="font-size:12px;color:#b8c2d6;font-weight:500;text-decoration:none;transition:color .2s;">Work</a></li>
-      <li><a href="#about" class="nav-a" data-s="about" style="font-size:12px;color:#b8c2d6;font-weight:500;text-decoration:none;transition:color .2s;">About</a></li>
+      <li><a href="#work" class="nav-a" data-s="work">Work</a></li>
+      <li><a href="#about" class="nav-a" data-s="about">About</a></li>
     </ul>
     <div class="nav-right" style="display:flex;align-items:center;gap:10px;">
-      <span style="display:flex;align-items:center;gap:6px;font-size:10px;color:#b8c2d6;letter-spacing:.06em;text-transform:uppercase;">
-        <span style="width:5px;height:5px;border-radius:50%;background:#3dffa0;box-shadow:0 0 10px #3dffa0;animation:pulse 2s ease-in-out infinite;display:block;"></span>AVAILABLE
-      </span>
-      <a href="resume.pdf" class="btn-r" download style="padding:6px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);font-size:11px;font-weight:500;color:#fff;text-decoration:none;transition:all .25s;white-space:nowrap;">Resume</a>
+      <a href="./assets/Balamurugan-Sivamayam-Resume.docx" class="btn-r" download style="padding:6px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);font-size:11px;font-weight:500;color:#fff;text-decoration:none;transition:all .25s;white-space:nowrap;">Resume</a>
     </div>
   </div>
 </nav>
@@ -1261,7 +1260,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <!-- ═══ SELECTED WORK ═══ -->
 <h2 class="hp-sel-h" id="work">Selected work</h2>
 
-<!-- QARun — Top Left -->
+<!-- QARun, Top Left -->
 <div class="hp-card" style="top:902px;left:100px;" onclick="showCaseStudy('qarun','QARun')">
   <div class="hp-card-inner">
     <div class="hp-card-img-wrap">
@@ -1271,16 +1270,16 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     </div>
     <div class="hp-card-meta">
       <span class="hp-card-title">QARun</span>
-      <span class="hp-card-desc">Intelligent API testing — testers validate, not configure.</span>
+      <span class="hp-card-desc">Intelligent API testing, testers validate, not configure.</span>
     </div>
   </div>
 </div>
 
-<!-- Aviation / IndiGo — Top Right -->
+<!-- Aviation / IndiGo, Top Right -->
 <div class="hp-card" style="top:902px;left:755px;" onclick="showCaseStudy('indigo','IndiGo Ground Control')">
   <div class="hp-card-inner">
-    <div class="hp-card-img-wrap" style="background:#080b14;">
-      <img class="hp-card-img" src="./assets/indigo.png" alt="IndiGo" loading="lazy">
+    <div class="hp-card-img-wrap">
+      <img class="hp-card-img" src="./assets/indigo.png" alt="IndiGo" loading="lazy" style="background:#080b14;">
       <div class="hp-card-grad"></div>
       <div class="hp-card-hover-ovl"><button class="hp-view-btn">View Work →</button></div>
     </div>
@@ -1291,11 +1290,11 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   </div>
 </div>
 
-<!-- Farm Monitor — Bottom Left -->
+<!-- Farm Monitor, Bottom Left -->
 <div class="hp-card" style="top:1367px;left:100px;" onclick="showCaseStudy('farmmonitor','Farm Monitor')">
   <div class="hp-card-inner">
     <div class="hp-card-img-wrap">
-      <img class="hp-card-img" src="./assets/pondlogs.png" alt="Farm Monitor" loading="lazy" style="object-position:top;">
+      <img class="hp-card-img" src="./assets/pondlogs.png" alt="Farm Monitor" loading="lazy">
       <div class="hp-card-grad"></div>
       <div class="hp-card-hover-ovl"><button class="hp-view-btn">View Work →</button></div>
     </div>
@@ -1306,17 +1305,17 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   </div>
 </div>
 
-<!-- REAP — Bottom Right -->
+<!-- REAP, Bottom Right -->
 <div class="hp-card" style="top:1367px;left:755px;" onclick="showCaseStudy('reap','REAP')">
   <div class="hp-card-inner">
     <div class="hp-card-img-wrap">
-      <img class="hp-card-img" src="./assets/carepath.png" alt="CarePath AI" loading="lazy">
+      <img class="hp-card-img" src="./assets/reap-globe.png" alt="REAP" loading="lazy">
       <div class="hp-card-grad"></div>
       <div class="hp-card-hover-ovl"><button class="hp-view-btn">View Work →</button></div>
     </div>
     <div class="hp-card-meta">
       <span class="hp-card-title">REAP</span>
-      <span class="hp-card-desc">AI NetOps — multi-site network command center.</span>
+      <span class="hp-card-desc">AI NetOps, multi-site network command center.</span>
     </div>
   </div>
 </div>
@@ -1326,7 +1325,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <div class="hp-clients-grid" style="overflow:visible;">
   <!-- Figma-exact logos rendered as single crisp image -->
   <img src="./assets/clients-logos.png" alt="Client logos" style="position:absolute;top:0;left:0;width:1253px;height:340px;object-fit:contain;object-position:left center;opacity:1;" loading="lazy">
-  <!-- Individual logos below are hidden — using screenshot above instead -->
+  <!-- Individual logos below are hidden, using screenshot above instead -->
   <!-- Row 1 -->
   <img class="hp-logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="left:93px;top:8px;width:115px;height:32px;" alt="Spoors">
   <img class="hp-logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="left:372px;top:11px;width:142px;height:26px;" alt="AI Educator">
@@ -1405,37 +1404,37 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
       <p class="hp-tl-role">Senior Product Designer</p>
       <div class="hp-tl-co"><img class="hp-tl-logo" src="./assets/divami-logo.png" alt=""><span class="hp-tl-co-name">Divami Design Labs</span></div>
       <div class="hp-tl-line"></div>
-      <p class="hp-tl-date">2024 Sep — Present</p>
+      <p class="hp-tl-date">Sep 2024 – Present</p>
     </div>
     <div class="hp-tl-item" style="width:140px;">
       <p class="hp-tl-role">Lead UI Designer</p>
       <div class="hp-tl-co"><img class="hp-tl-logo" src="./assets/divami-logo.png" alt=""><span class="hp-tl-co-name">Divami Design Labs</span></div>
       <div class="hp-tl-line"></div>
-      <p class="hp-tl-date">2022 Aug — 2024 Sep</p>
+      <p class="hp-tl-date">Aug 2022 – Sep 2024</p>
     </div>
     <div class="hp-tl-item" style="width:140px;">
       <p class="hp-tl-role">Senior UI Designer</p>
       <div class="hp-tl-co"><img class="hp-tl-logo" src="./assets/divami-logo.png" alt=""><span class="hp-tl-co-name">Divami Design Labs</span></div>
       <div class="hp-tl-line"></div>
-      <p class="hp-tl-date">2021 Jun — 2022 Aug</p>
+      <p class="hp-tl-date">Jun 2021 – Aug 2022</p>
     </div>
     <div class="hp-tl-item" style="width:140px;">
       <p class="hp-tl-role">UI Designer</p>
       <div class="hp-tl-co"><img class="hp-tl-logo" src="./assets/divami-logo.png" alt=""><span class="hp-tl-co-name">Divami Design Labs</span></div>
       <div class="hp-tl-line"></div>
-      <p class="hp-tl-date">2019 May — 2021 Jun</p>
+      <p class="hp-tl-date">May 2019 – Jun 2021</p>
     </div>
     <div class="hp-tl-item" style="width:140px;">
       <p class="hp-tl-role">Creative Designer</p>
       <div class="hp-tl-co"><img class="hp-tl-logo" src="./assets/ulo-logo.png" alt="" style="border-radius:50%;"><span class="hp-tl-co-name">ULO Hotels</span></div>
       <div class="hp-tl-line"></div>
-      <p class="hp-tl-date">2017 Aug — 2019 Jan</p>
+      <p class="hp-tl-date">Aug 2017 – Jan 2019</p>
     </div>
     <div class="hp-tl-item" style="width:140px;">
       <p class="hp-tl-role">Graphic Designer</p>
       <div class="hp-tl-co"><img class="hp-tl-logo" src="./assets/hashtag-logo.png" alt="" style="border-radius:50%;"><span class="hp-tl-co-name">Hash Tag Design</span></div>
       <div class="hp-tl-line"></div>
-      <p class="hp-tl-date">2017 Jan — 2017 Jul</p>
+      <p class="hp-tl-date">Jan 2017 – Jul 2017</p>
     </div>
   </div>
 </div>
@@ -1462,7 +1461,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <!-- ═══ FOOTER CTA ═══ -->
 <div class="hp-footer-section">
   <h2 class="hp-footer-h">Let's design something<br>that scales trust.</h2>
-  <a href="resume.pdf" download class="hp-dl-btn">Download Resume</a>
+  <a href="./assets/Balamurugan-Sivamayam-Resume.docx" download="Balamurugan-Sivamayam-Resume.docx" class="hp-dl-btn" onclick="var l=document.createElement('a');l.href=this.href;l.download=this.download;l.click();return false;">Download Resume</a>
   <p class="hp-copyright">© 2026 Balamurugan Sivamayam</p>
 </div>
 
@@ -1480,7 +1479,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Display:wght@400;500;600;700&display=swap');
 :root{--gs:'Google Sans','DM Sans','Inter',sans-serif;--gsd:'Google Sans Display','Google Sans','DM Sans',sans-serif;}
 .igs-outer{width:100%;min-height:100vh;background:#05060a;overflow-x:auto;}
-.igs-frame{position:relative;width:1440px;min-height:4460px;background:#05060a;margin:0 auto;overflow:hidden;font-family:var(--gs);}
+.igs-frame{position:relative;width:1440px;min-height:4650px;background:#05060a;margin:0 auto;overflow:hidden;font-family:var(--gs);}
 /* NAV */
 .igs-nav{position:absolute;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:20px 60px 20px 40px;background:rgba(5,6,10,0.88);border-bottom:1px solid rgba(255,255,255,0.07);z-index:10;box-sizing:border-box;}
 .igs-logo{width:26px;height:36px;object-fit:contain;display:block;}
@@ -1521,16 +1520,16 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 .igs-ins-r{margin:0;width:563px;font-family:var(--gsd);font-weight:500;font-size:46px;line-height:60px;color:#6babff;}
 /* SOLUTION */
 .igs-sol-h{position:absolute;top:2115px;left:226px;margin:0;width:988px;font-family:var(--gsd);font-weight:500;font-size:56px;line-height:60px;color:#fff;white-space:nowrap;z-index:5;}
-.igs-shot-wrap{position:absolute;top:2222px;left:50%;transform:translateX(-50%);width:960px;height:540px;border:2px solid #2776ff;border-radius:12px;overflow:hidden;z-index:5;box-shadow:0 0 0 1px rgba(39,118,255,.25),0 24px 60px rgba(0,0,0,.7);}
-.igs-shot{width:100%;height:100%;object-fit:contain;display:block;background:#0a0d14;}
+.igs-shot-wrap{position:absolute;top:2239px;left:50%;transform:translateX(-50%);width:1136px;height:707px;border:2px solid #2776ff;border-radius:0;overflow:hidden;z-index:5;box-shadow:0 0 0 1px rgba(39,118,255,.25),0 24px 60px rgba(0,0,0,.7);}
+.igs-shot{width:100%;height:100%;object-fit:cover;display:block;background:#0a0d14;}
 /* FEATURES */
-.igs-features{position:absolute;top:2872px;left:143px;display:flex;gap:123px;z-index:5;}
+.igs-features{position:absolute;top:3056px;left:143px;display:flex;gap:123px;z-index:5;}
 .igs-fc{display:flex;flex-direction:column;gap:8px;width:303px;}
 .igs-fc-h{margin:0;font-family:var(--gs);font-weight:500;font-size:20px;line-height:normal;color:#fff;}
 .igs-fc-b{margin:0;font-family:var(--gs);font-weight:400;font-size:14px;line-height:24px;color:#bcbcbc;}
 /* RESULTS */
-.igs-res-h{position:absolute;top:3241px;left:146px;margin:0;width:1147.5px;font-family:var(--gsd);font-weight:500;font-size:56px;line-height:60px;color:#fff;text-align:center;z-index:5;}
-.igs-stats{position:absolute;top:3381px;left:146px;display:flex;gap:120px;align-items:flex-start;z-index:5;}
+.igs-res-h{position:absolute;top:3425px;left:146px;margin:0;width:1147.5px;font-family:var(--gsd);font-weight:500;font-size:56px;line-height:60px;color:#fff;text-align:center;z-index:5;}
+.igs-stats{position:absolute;top:3565px;left:146px;display:flex;gap:120px;align-items:flex-start;z-index:5;}
 .igs-stat{display:flex;flex-direction:column;gap:8px;}
 .igs-stat:nth-child(1){width:163px;}
 .igs-stat:nth-child(2){width:155px;}
@@ -1544,19 +1543,19 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 .igs-stat-sup{font-size:40px;line-height:90px;vertical-align:baseline;}
 .igs-stat-l{margin:0;font-family:var(--gs);font-weight:400;font-size:16px;line-height:normal;color:#fff;}
 /* OUTCOMES */
-.igs-outcomes{position:absolute;top:3619px;left:271.75px;display:flex;gap:120px;align-items:flex-start;z-index:5;}
+.igs-outcomes{position:absolute;top:3803px;left:271.75px;display:flex;gap:120px;align-items:flex-start;z-index:5;}
 .igs-outcome{display:flex;flex-direction:column;gap:16px;}
 .igs-outcome:nth-child(1){width:386px;}
 .igs-outcome:nth-child(2){width:390px;}
 .igs-oc-title{margin:0;font-family:var(--gs);font-weight:500;font-size:20px;line-height:28px;color:#fff;}
 .igs-oc-body{margin:0;font-family:var(--gs);font-weight:400;font-size:14px;line-height:24px;color:#bcbcbc;}
 /* CTA */
-.igs-cta{position:absolute;top:3963px;left:50%;transform:translateX(-50%);width:1100px;display:flex;flex-direction:column;gap:40px;align-items:center;z-index:5;}
+.igs-cta{position:absolute;top:4147px;left:50%;transform:translateX(-50%);width:1100px;display:flex;flex-direction:column;gap:40px;align-items:center;z-index:5;}
 .igs-cta-h{margin:0;font-family:var(--gsd);font-weight:600;font-size:80px;line-height:90px;background:linear-gradient(-48.673deg,#ffffff 49.134%,rgb(74,135,240) 97.439%);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center;}
 .igs-cta-btn{background:rgba(255,255,255,0.04);border:1px solid #fff;border-radius:999px;padding:0 20px;height:44px;font-family:var(--gs);font-weight:500;font-size:15px;color:#fff;cursor:pointer;transition:background .2s;white-space:nowrap;}
 .igs-cta-btn:hover{background:rgba(255,255,255,0.1);}
 /* COPYRIGHT */
-.igs-copy{position:absolute;top:4370px;left:50%;transform:translateX(-50%);margin:0;font-family:var(--gs);font-weight:400;font-size:16px;color:#bcbcbc;white-space:nowrap;text-align:center;z-index:5;}
+.igs-copy{position:absolute;top:4554px;left:50%;transform:translateX(-50%);margin:0;font-family:var(--gs);font-weight:400;font-size:16px;color:#bcbcbc;white-space:nowrap;text-align:center;z-index:5;}
 </style>
 
 <div class="igs-outer">
@@ -1570,7 +1569,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 
   <!-- HERO BACKGROUND IMAGE + OVERLAY -->
   <div class="igs-bg-wrap">
-    <img class="igs-bg-img" src="./assets/indigo.png" alt="">
+    <img class="igs-bg-img" src="./assets/indigo-hero.png" alt="">
     <div class="igs-bg-ovl"></div>
   </div>
 
@@ -1591,7 +1590,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="igs-challenge">
     <div class="igs-ch-l">
       <h2 class="igs-ch-title">Tarmac blindness<br>was a safety risk.</h2>
-      <p class="igs-ch-body">IndiGo operates 20+ ground vehicles per airport — ambulances, fire trucks, fuel dispensers, sweepers, passenger coaches. Before this system, coordination was entirely radio-based. No one could see the full picture. Near-misses were rising. Emergency response times were inconsistent and unmeasured.</p>
+      <p class="igs-ch-body">IndiGo operates 20+ ground vehicles per airport, ambulances, fire trucks, fuel dispensers, sweepers, passenger coaches. Before this system, coordination was entirely radio-based. No one could see the full picture. Near-misses were rising. Emergency response times were inconsistent and unmeasured.</p>
     </div>
     <div class="igs-ch-r">
       <div>
@@ -1611,17 +1610,17 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 
   <!-- STRATEGY HEADING + SUBTITLE -->
   <h2 class="igs-strat-h">Three decisions that shaped everything.</h2>
-  <p class="igs-strat-sub">Ground teams don't need dashboards — they need situational clarity. Every design choice had to pass one test: does this help someone act faster, or just inform them?</p>
+  <p class="igs-strat-sub">Ground teams don't need dashboards, they need situational clarity. Every design choice had to pass one test: does this help someone act faster, or just inform them?</p>
 
   <!-- STRATEGY CARDS -->
   <div class="igs-strats">
     <div class="igs-sc">
       <p class="igs-sc-h">Make the invisible visible</p>
-      <p class="igs-sc-b">A live map with all 58 vehicles moving in real time. Not a list, not a table — a spatial, instant understanding of the tarmac. Asset positions update every 3 seconds.</p>
+      <p class="igs-sc-b">A live map with all 58 vehicles moving in real time. Not a list, not a table, a spatial, instant understanding of the tarmac. Asset positions update every 3 seconds.</p>
     </div>
     <div class="igs-sc">
       <p class="igs-sc-h">Priority over information</p>
-      <p class="igs-sc-b">Three alert tiers — Critical, Warning, Info — with critical alerts surfaced as a persistent overlay. The team sees the most urgent issue first, not the most recent one.</p>
+      <p class="igs-sc-b">Three alert tiers, Critical, Warning, Info, with critical alerts surfaced as a persistent overlay. The team sees the most urgent issue first, not the most recent one.</p>
     </div>
     <div class="igs-sc">
       <p class="igs-sc-h">Prevent before you respond</p>
@@ -1631,27 +1630,23 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 
   <!-- INSIGHT SECTION -->
   <div class="igs-insight">
-    <p class="igs-ins-l">Ground teams don't need more data — they need to know three things instantly</p>
+    <p class="igs-ins-l">Ground teams don't need more data, they need to know three things instantly</p>
     <p class="igs-ins-r">Is the tarmac safe? Where is every vehicle? What needs action right now?"</p>
   </div>
 
   <!-- SOLUTION HEADING -->
   <p class="igs-sol-h">One system. Every airport. All vehicles.</p>
 
-  <!-- DASHBOARD VIDEO -->
+  <!-- DASHBOARD SCREENSHOT -->
   <div class="igs-shot-wrap">
-    <video class="igs-shot" autoplay muted loop playsinline>
-      <source src="./assets/vehicle-tracking.mp4" type="video/mp4">
-      <!-- Fallback to screenshot if video not available -->
-      <img class="igs-shot" src="./assets/indigo.png" alt="IndiGo Ground Control Dashboard">
-    </video>
+    <img class="igs-shot" src="./assets/indigo-dashboard.png" alt="IndiGo Ground Control Dashboard">
   </div>
 
   <!-- FEATURE CALLOUTS -->
   <div class="igs-features">
     <div class="igs-fc">
       <p class="igs-fc-h">Live Map Dashboard</p>
-      <p class="igs-fc-b">All 58 assets across 3 airports updating every 3 seconds. Click any vehicle for full details — fuel level, speed, heading, maintenance status, and active violations.</p>
+      <p class="igs-fc-b">All 58 assets across 3 airports updating every 3 seconds. Click any vehicle for full details, fuel level, speed, heading, maintenance status, and active violations.</p>
     </div>
     <div class="igs-fc">
       <p class="igs-fc-h">Geofence Safety Zones</p>
@@ -1659,7 +1654,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     </div>
     <div class="igs-fc">
       <p class="igs-fc-h">Alert Hierarchy</p>
-      <p class="igs-fc-b">Critical alerts surface as a persistent on-screen overlay — never missed. One tap zooms the map directly to the vehicle in question.</p>
+      <p class="igs-fc-b">Critical alerts surface as a persistent on-screen overlay, never missed. One tap zooms the map directly to the vehicle in question.</p>
     </div>
   </div>
 
@@ -1682,7 +1677,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     </div>
     <div class="igs-stat">
       <p class="igs-stat-n"><span>100</span><span class="igs-stat-sup">%</span></p>
-      <p class="igs-stat-l">Tarmac coverage — every zone geofenced and monitored</p>
+      <p class="igs-stat-l">Tarmac coverage, every zone geofenced and monitored</p>
     </div>
   </div>
 
@@ -1690,11 +1685,11 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="igs-outcomes">
     <div class="igs-outcome">
       <p class="igs-oc-title">GROUND SAFETY<br>From blind spots to full visibility</p>
-      <p class="igs-oc-body">The operations team went from no digital view of the tarmac to a live satellite map with all vehicles, zones, and active alerts — across Cochin, Delhi, and Hyderabad simultaneously.</p>
+      <p class="igs-oc-body">The operations team went from no digital view of the tarmac to a live satellite map with all vehicles, zones, and active alerts, across Cochin, Delhi, and Hyderabad simultaneously.</p>
     </div>
     <div class="igs-outcome">
       <p class="igs-oc-title">OPERATIONAL EFFICIENCY<br>Radio calls → automated alerts</p>
-      <p class="igs-oc-body">Critical vehicle issues that previously required 3–4 radio exchanges now surface automatically with location, severity, and direct map zoom — eliminating coordination overhead.</p>
+      <p class="igs-oc-body">Critical vehicle issues that previously required 3–4 radio exchanges now surface automatically with location, severity, and direct map zoom, eliminating coordination overhead.</p>
     </div>
   </div>
 
@@ -1710,7 +1705,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 </div><!-- igs-frame -->
 </div><!-- igs-outer -->
 
-<!-- (old main/footer removed — replaced by Figma-exact layout above) -->
+<!-- (old main/footer removed, replaced by Figma-exact layout above) -->
 <div style="display:none">
 <main>
 
@@ -1719,7 +1714,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="w">
     <div class="cs-hero-tag"><span class="dot"></span>Aviation · Ground Operations · Real-time Dashboard · 2024</div>
     <h1 class="cs-title">Ground Control,<br><span class="cs-grad">Reimagined.</span></h1>
-    <p class="cs-sub">A unified real-time operations platform that replaced fragmented radio calls and manual spotters with intelligent vehicle tracking, automated alerts, and geofence-based safety zones — across 3 major Indian airports.</p>
+    <p class="cs-sub">A unified real-time operations platform that replaced fragmented radio calls and manual spotters with intelligent vehicle tracking, automated alerts, and geofence-based safety zones, across 3 major Indian airports.</p>
     <div class="cs-meta-pills">
       <span class="cs-meta-pill">Lead UI Designer</span>
       <span class="cs-meta-pill">B2B SaaS · Aviation</span>
@@ -1743,7 +1738,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
         <div>
           <div class="cs-eyebrow">01 The Challenge</div>
           <h2 class="cs-h">Tarmac blindness<br>was a safety risk.</h2>
-          <p class="cs-p">IndiGo operates 20+ ground vehicles per airport on the tarmac — ambulances, fire trucks, fuel dispensers, sweepers, passenger coaches. Before this system, coordination was entirely radio-based. No one could see the full picture. Near-misses were rising. Emergency response times were inconsistent and unmeasured.</p>
+          <p class="cs-p">IndiGo operates 20+ ground vehicles per airport on the tarmac, ambulances, fire trucks, fuel dispensers, sweepers, passenger coaches. Before this system, coordination was entirely radio-based. No one could see the full picture. Near-misses were rising. Emergency response times were inconsistent and unmeasured.</p>
         </div>
         <div class="cs-friction-list">
           <div class="cs-friction">
@@ -1769,17 +1764,17 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="w">
     <div class="cs-eyebrow">02 Design Strategy</div>
     <h2 class="cs-h">Three decisions that shaped everything.</h2>
-    <p class="cs-p">Ground teams don't need dashboards — they need situational clarity. Every design choice had to pass one test: does this help someone act faster, or just inform them?</p>
+    <p class="cs-p">Ground teams don't need dashboards, they need situational clarity. Every design choice had to pass one test: does this help someone act faster, or just inform them?</p>
     <div class="cs-strat-grid">
       <div class="cs-strat">
         <div class="cs-strat-n">01</div>
         <div class="cs-strat-h">Make the invisible visible</div>
-        <p class="cs-strat-p">A live map with all 58 vehicles moving in real time. Not a list, not a table — a spatial, instant understanding of the tarmac. Asset positions update every 3 seconds.</p>
+        <p class="cs-strat-p">A live map with all 58 vehicles moving in real time. Not a list, not a table, a spatial, instant understanding of the tarmac. Asset positions update every 3 seconds.</p>
       </div>
       <div class="cs-strat">
         <div class="cs-strat-n">02</div>
         <div class="cs-strat-h">Priority over information</div>
-        <p class="cs-strat-p">Three alert tiers — Critical, Warning, Info — with critical alerts surfaced as a persistent overlay. The team sees the most urgent issue first, not the most recent one.</p>
+        <p class="cs-strat-p">Three alert tiers, Critical, Warning, Info, with critical alerts surfaced as a persistent overlay. The team sees the most urgent issue first, not the most recent one.</p>
       </div>
       <div class="cs-strat">
         <div class="cs-strat-n">03</div>
@@ -1795,7 +1790,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="w">
     <div class="cs-insight">
       <div class="cs-insight-lbl">Core Insight</div>
-      <p class="cs-insight-q">Ground teams don't need more data — they need to know three things instantly: <em>Is the tarmac safe? Where is every vehicle? What needs action right now?</em></p>
+      <p class="cs-insight-q">Ground teams don't need more data, they need to know three things instantly: <em>Is the tarmac safe? Where is every vehicle? What needs action right now?</em></p>
     </div>
   </div>
 </section>
@@ -1805,7 +1800,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="w">
     <div class="cs-eyebrow">03 The Solution</div>
     <h2 class="cs-h">One system. Every airport. All vehicles.</h2>
-    <p class="cs-p" style="margin-bottom:28px;">Four integrated modules, each answering a single operational question — designed so a ground controller can orient, act, and hand off without context-switching.</p>
+    <p class="cs-p" style="margin-bottom:28px;">Four integrated modules, each answering a single operational question, designed so a ground controller can orient, act, and hand off without context-switching.</p>
 
     <!-- Dashboard Illustration -->
     <div class="cs-dash">
@@ -1874,9 +1869,9 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 
     <!-- Feature Cards -->
     <div class="cs-feat">
-      <div class="cs-fc"><div class="cs-fci ind">🗺</div><div class="cs-fc-h">Live Map Dashboard</div><p class="cs-fc-p">All 58 assets across 3 airports updating every 3 seconds. Click any vehicle for full details — fuel, speed, heading, maintenance status, and active violations.</p></div>
+      <div class="cs-fc"><div class="cs-fci ind">🗺</div><div class="cs-fc-h">Live Map Dashboard</div><p class="cs-fc-p">All 58 assets across 3 airports updating every 3 seconds. Click any vehicle for full details, fuel, speed, heading, maintenance status, and active violations.</p></div>
       <div class="cs-fc"><div class="cs-fci grn">🛡</div><div class="cs-fc-h">Geofence Safety Zones</div><p class="cs-fc-p">Draw any polygon on the tarmac. Assign it as a Red Zone, Safe Corridor, or Maintenance Bay. Auto-triggers alerts the moment a vehicle breaches the boundary.</p></div>
-      <div class="cs-fc"><div class="cs-fci amb">⚡</div><div class="cs-fc-h">Alert Hierarchy</div><p class="cs-fc-p">Critical alerts surface as a persistent on-screen overlay — never missed. One tap zooms the map directly to the vehicle in question.</p></div>
+      <div class="cs-fc"><div class="cs-fci amb">⚡</div><div class="cs-fc-h">Alert Hierarchy</div><p class="cs-fc-p">Critical alerts surface as a persistent on-screen overlay, never missed. One tap zooms the map directly to the vehicle in question.</p></div>
     </div>
   </div>
 </section>
@@ -1887,14 +1882,14 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     <div class="cs-eyebrow">04 Results & Impact</div>
     <h2 class="cs-h">Measurable. From day one.</h2>
     <div class="cs-results">
-      <div class="cs-rb"><div class="cs-rb-n" style="color:#6366f1">58</div><div class="cs-rb-l">Vehicles monitored in real time — previously zero digital visibility</div></div>
-      <div class="cs-rb"><div class="cs-rb-n" style="color:#10b981">3×</div><div class="cs-rb-l">Faster emergency dispatch — located in seconds, not minutes</div></div>
-      <div class="cs-rb"><div class="cs-rb-n" style="color:#f59e0b">70%</div><div class="cs-rb-l">Fewer missed maintenance windows — automated scheduling alerts</div></div>
-      <div class="cs-rb"><div class="cs-rb-n" style="color:#818cf8">100%</div><div class="cs-rb-l">Tarmac coverage — every zone geofenced and monitored</div></div>
+      <div class="cs-rb"><div class="cs-rb-n" style="color:#6366f1">58</div><div class="cs-rb-l">Vehicles monitored in real time, previously zero digital visibility</div></div>
+      <div class="cs-rb"><div class="cs-rb-n" style="color:#10b981">3×</div><div class="cs-rb-l">Faster emergency dispatch, located in seconds, not minutes</div></div>
+      <div class="cs-rb"><div class="cs-rb-n" style="color:#f59e0b">70%</div><div class="cs-rb-l">Fewer missed maintenance windows, automated scheduling alerts</div></div>
+      <div class="cs-rb"><div class="cs-rb-n" style="color:#818cf8">100%</div><div class="cs-rb-l">Tarmac coverage, every zone geofenced and monitored</div></div>
     </div>
     <div class="cs-rc-grid">
-      <div class="cs-rc"><div class="cs-rc-tag" style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);color:#818cf8;">Ground Safety</div><div class="cs-rc-h">From blind spots to full visibility</div><p class="cs-rc-p">The operations team went from no digital view of the tarmac to a live satellite map with all vehicles, zones, and active alerts — across Cochin, Delhi, and Hyderabad simultaneously.</p></div>
-      <div class="cs-rc"><div class="cs-rc-tag" style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);color:#10b981;">Operational Efficiency</div><div class="cs-rc-h">Radio calls → automated alerts</div><p class="cs-rc-p">Critical vehicle issues that previously required 3–4 radio exchanges now surface automatically with location, severity, and direct map zoom — eliminating coordination overhead.</p></div>
+      <div class="cs-rc"><div class="cs-rc-tag" style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);color:#818cf8;">Ground Safety</div><div class="cs-rc-h">From blind spots to full visibility</div><p class="cs-rc-p">The operations team went from no digital view of the tarmac to a live satellite map with all vehicles, zones, and active alerts, across Cochin, Delhi, and Hyderabad simultaneously.</p></div>
+      <div class="cs-rc"><div class="cs-rc-tag" style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);color:#10b981;">Operational Efficiency</div><div class="cs-rc-h">Radio calls → automated alerts</div><p class="cs-rc-p">Critical vehicle issues that previously required 3–4 radio exchanges now surface automatically with location, severity, and direct map zoom, eliminating coordination overhead.</p></div>
     </div>
   </div>
 </section>
@@ -1915,22 +1910,23 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <!-- NAV -->
 <nav class="tcs-nav">
   <button class="tcs-back" onclick="showPortfolio()">← Back to all work</button>
-  <div class="tcs-nav-mid">Farm Monitor <span class="tcs-nav-tag">CASE STUDY</span></div>
-  <a href="https://baladesigns.framer.website/pondlogs" target="_blank" class="tcs-nav-link">View live case study →</a>
 </nav>
 
 <!-- HERO -->
-<section class="tcs-hero" style="background:radial-gradient(ellipse at 80% 30%,rgba(181,255,109,.08),transparent 45%),radial-gradient(ellipse at 20% 70%,rgba(255,205,107,.06),transparent 45%);">
-  <div class="tcs-hero-inner">
+<section class="tcs-hero" style="background:radial-gradient(ellipse at 80% 30%,rgba(181,255,109,.08),transparent 45%),radial-gradient(ellipse at 20% 70%,rgba(255,205,107,.06),transparent 45%);display:flex;align-items:center;gap:60px;">
+  <div style="flex:0 0 480px;">
     <div class="tcs-tag"><span class="tcs-tag-dot" style="background:#b5ff6d;box-shadow:0 0 8px rgba(181,255,109,.8);"></span>AgriTech · IoT · AI Intelligence · 2022</div>
     <h1 class="tcs-h1" style="background:linear-gradient(-60deg,#ffffff 50%,#b5ff6d 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">When a Pond Fails,<br>You Have Hours.</h1>
-    <p class="tcs-sub">PondLogs was rebuilt as an AI-powered command system for precision aquaculture — transforming manual logs and fragmented sensor data into role-based intelligence that prevents crop failures before they happen.</p>
+    <p class="tcs-sub">PondLogs was rebuilt as an AI-powered command system for precision aquaculture, transforming manual logs and fragmented sensor data into role-based intelligence that prevents crop failures before they happen.</p>
     <div class="tcs-pills">
       <span class="tcs-pill">Lead UI Designer</span>
       <span class="tcs-pill">AgriTech · IoT · AI</span>
       <span class="tcs-pill">Precision Aquaculture</span>
       <span class="tcs-pill">Dec 2021 – May 2022</span>
     </div>
+  </div>
+  <div style="flex:1;min-width:0;border-radius:12px;overflow:hidden;border:2px solid rgba(181,255,109,.25);box-shadow:0 24px 60px rgba(0,0,0,.6);">
+    <img src="./assets/farmmonitor-hero.png" alt="PondLogs Farm Overview" style="width:100%;height:auto;display:block;">
   </div>
 </section>
 
@@ -1939,12 +1935,12 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="tcs-ch-row">
     <div class="tcs-ch-l">
       <h2 class="tcs-ch-title">At 3am, shrimp farms don't fail slowly.</h2>
-      <p class="tcs-ch-body">A sudden oxygen drop can erase months of investment in hours. PondLogs had IoT sensors collecting real-time data from every pond — but the software layer couldn't translate those signals into action. Farm managers were still running on spreadsheets, instinct, and paper logs. The data was there. The decisions weren't.</p>
+      <p class="tcs-ch-body">A sudden oxygen drop can erase months of investment in hours. PondLogs had IoT sensors collecting real-time data from every pond, but the software layer couldn't translate those signals into action. Farm managers were still running on spreadsheets, instinct, and paper logs. The data was there. The decisions weren't.</p>
     </div>
     <div class="tcs-ch-r">
       <div>
         <p class="tcs-fr-title">No real-time pond intelligence</p>
-        <p class="tcs-fr-body">Farmers physically walked ponds to collect readings. No digital record of conditions. A single missed oxygen reading — especially at night — could end an entire crop with no warning.</p>
+        <p class="tcs-fr-body">Farmers physically walked ponds to collect readings. No digital record of conditions. A single missed oxygen reading, especially at night, could end an entire crop with no warning.</p>
       </div>
       <div>
         <p class="tcs-fr-title">Cognitive overload for managers</p>
@@ -1952,7 +1948,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
       </div>
       <div>
         <p class="tcs-fr-title">Role blindness across the farm</p>
-        <p class="tcs-fr-body">Farmers, managers, and owners all saw the same flat data. No role-specific intelligence. No one knew which signals were theirs to act on — so most waited, and some waited too long.</p>
+        <p class="tcs-fr-body">Farmers, managers, and owners all saw the same flat data. No role-specific intelligence. No one knew which signals were theirs to act on, so most waited, and some waited too long.</p>
       </div>
     </div>
   </div>
@@ -1962,20 +1958,20 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <section class="tcs-sec-alt">
   <div class="tcs-strat-head">
     <h2 class="tcs-strat-h">Three decisions that shaped everything.</h2>
-    <p class="tcs-strat-sub">The initial brief was "better dashboards." The insight was: farm teams needed decisional clarity, not more data. Every design choice had to pass one test — does this help someone act faster?</p>
+    <p class="tcs-strat-sub">The initial brief was "better dashboards." The insight was: farm teams needed decisional clarity, not more data. Every design choice had to pass one test, does this help someone act faster?</p>
   </div>
   <div class="tcs-strats">
     <div class="tcs-sc">
       <p class="tcs-sc-h">Role-based intelligence, not dashboards</p>
-      <p class="tcs-sc-b">Three distinct views — Farmer (what's at risk in my ponds right now?), Manager (where are my problem ponds?), Owner (am I profitable?). Same data, three lenses. Each role gets only what they need to act.</p>
+      <p class="tcs-sc-b">Three distinct views, Farmer (what's at risk in my ponds right now?), Manager (where are my problem ponds?), Owner (am I profitable?). Same data, three lenses. Each role gets only what they need to act.</p>
     </div>
     <div class="tcs-sc">
       <p class="tcs-sc-h">Biological urgency as design principle</p>
-      <p class="tcs-sc-b">Oxygen drops aren't notifications — they're survival events. Redesigned the alert hierarchy so biological emergencies bypass normal notification patterns and demand immediate attention. Criticality drove visual hierarchy.</p>
+      <p class="tcs-sc-b">Oxygen drops aren't notifications, they're survival events. Redesigned the alert hierarchy so biological emergencies bypass normal notification patterns and demand immediate attention. Criticality drove visual hierarchy.</p>
     </div>
     <div class="tcs-sc">
       <p class="tcs-sc-h">Prediction over logging</p>
-      <p class="tcs-sc-b">Shifted the platform from passive data recording to AI-driven early warning. The system now tells you what's about to happen — not just what already did. Farmers stop reacting to failures and start preventing them.</p>
+      <p class="tcs-sc-b">Shifted the platform from passive data recording to AI-driven early warning. The system now tells you what's about to happen, not just what already did. Farmers stop reacting to failures and start preventing them.</p>
     </div>
   </div>
 </section>
@@ -1991,22 +1987,33 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <!-- THE SOLUTION -->
 <section class="tcs-sec-alt">
   <h2 class="tcs-sol-h">One system. Every pond. Every role.</h2>
-  <div class="tcs-shot-wrap" style="border:2px solid #b5ff6d;max-width:960px;">
-    <img src="https://framerusercontent.com/images/FtKbKXkcuoV12RoqX71Lxc08PI.png?scale-down-to=1024&width=2732&height=1388" alt="PondLogs multi-pond command center" loading="lazy">
+  <div class="tcs-shot-wrap" style="border:2px solid rgba(181,255,109,.4);max-width:960px;padding:0;overflow:hidden;">
+    <img src="./assets/farmmonitor-img1.png" alt="PondLogs pond detail, water quality, feeding, tasks" style="width:100%;height:auto;display:block;">
   </div>
-  <div class="tcs-feat-row">
+  <div class="tcs-feat-row" style="margin-top:56px;">
     <div class="tcs-fc">
       <p class="tcs-fc-h">Pond Health Command Center</p>
       <p class="tcs-fc-b">Real-time O₂, temperature, pH, and feeding status for every pond in one view. Color-coded health states surface risk instantly. Tap any pond for deep diagnostics and trend history.</p>
     </div>
     <div class="tcs-fc">
       <p class="tcs-fc-h">AI Alert Intelligence</p>
-      <p class="tcs-fc-b">Predictive alerts surface oxygen drops, feeding anomalies, and equipment failures before they become critical. Every alert ranked by biological urgency — not arrival time. The most dangerous issue is always visible first.</p>
+      <p class="tcs-fc-b">Predictive alerts surface oxygen drops, feeding anomalies, and equipment failures before they become critical. Every alert ranked by biological urgency, not arrival time. The most dangerous issue is always visible first.</p>
     </div>
     <div class="tcs-fc">
       <p class="tcs-fc-h">Role-Based Command Views</p>
-      <p class="tcs-fc-b">Farmer gets ground-level alerts (act now). Manager sees pond-health overview (oversee at scale). Owner tracks farm performance and ROI. Separate entry points — one platform for the entire organization.</p>
+      <p class="tcs-fc-b">Farmer gets ground-level alerts (act now). Manager sees pond-health overview (oversee at scale). Owner tracks farm performance and ROI. Separate entry points, one platform for the entire organization.</p>
     </div>
+  </div>
+</section>
+
+<!-- MONITORING MAP + MULTI-ROLE SCREENS -->
+<section class="tcs-sec-alt">
+  <h2 class="tcs-sol-h">Real-time map intelligence. Role-based command views.</h2>
+  <div class="tcs-shot-wrap" style="border:2px solid rgba(181,255,109,.4);max-width:960px;padding:0;overflow:hidden;">
+    <img src="./assets/farmmonitor-img2.png" alt="PondLogs monitoring map" style="width:100%;height:auto;display:block;">
+  </div>
+  <div class="tcs-shot-wrap" style="border:2px solid rgba(181,255,109,.25);max-width:960px;padding:0;overflow:hidden;margin-top:16px;">
+    <img src="./assets/farmmonitor-img3.png" alt="PondLogs multi-role screens" style="width:100%;height:auto;display:block;">
   </div>
 </section>
 
@@ -2038,7 +2045,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     </div>
     <div class="tcs-outcome">
       <p class="tcs-oc-title">From internal tool to global product</p>
-      <p class="tcs-oc-body">Adopted across 10+ countries. The role-driven architecture became the foundation for future product development. Design was central to pilot strategy and investor validation — PondLogs transformed from a monitoring tool into aquaculture operating infrastructure.</p>
+      <p class="tcs-oc-body">Adopted across 10+ countries. The role-driven architecture became the foundation for future product development. Design was central to pilot strategy and investor validation, PondLogs transformed from a monitoring tool into aquaculture operating infrastructure.</p>
     </div>
   </div>
 </section>
@@ -2062,22 +2069,23 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <!-- NAV -->
 <nav class="tcs-nav">
   <button class="tcs-back" onclick="showPortfolio()">← Back to all work</button>
-  <div class="tcs-nav-mid">REAP <span class="tcs-nav-tag">CASE STUDY</span></div>
-  <span class="tcs-nav-link" style="color:rgba(116,184,255,.7);">AI NetOps · Multi-Site Monitoring</span>
 </nav>
 
 <!-- HERO -->
-<section class="tcs-hero" style="background:radial-gradient(ellipse at 80% 20%,rgba(116,184,255,.07),transparent 45%),radial-gradient(ellipse at 20% 80%,rgba(111,255,224,.04),transparent 45%);">
-  <div class="tcs-hero-inner">
+<section class="tcs-hero" style="background:radial-gradient(ellipse at 72% 30%,rgba(116,184,255,.22),transparent 50%),radial-gradient(ellipse at 85% 70%,rgba(111,255,224,.14),transparent 40%),radial-gradient(ellipse at 15% 60%,rgba(116,184,255,.08),transparent 45%);display:flex;align-items:center;gap:48px;">
+  <div style="flex:0 0 420px;">
     <div class="tcs-tag"><span class="tcs-tag-dot" style="background:#74b8ff;box-shadow:0 0 8px rgba(116,184,255,.8);"></span>AI NetOps Platform · Multi-Site Network Monitoring · 2026</div>
     <h1 class="tcs-h1" style="background:linear-gradient(-60deg,#ffffff 50%,#74b8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">When the Network Fails,<br>Every Site Feels It.</h1>
-    <p class="tcs-sub">REAP is an AI-native network operations platform for monitoring firewalls, devices, links, routing paths, and incidents across multiple locations. It gives teams one live view of network health — then uses AI to explain what changed, where the issue is, what is affected, and what action should happen next.</p>
+    <p class="tcs-sub">REAP is an AI-native network operations platform for monitoring firewalls, devices, links, routing paths, and incidents across multiple locations. It gives teams one live view of network health, then uses AI to explain what changed, where the issue is, what is affected, and what action should happen next.</p>
     <div class="tcs-pills">
       <span class="tcs-pill">AI NetOps</span>
       <span class="tcs-pill">Firewall Monitoring</span>
       <span class="tcs-pill">Topology Intelligence</span>
       <span class="tcs-pill">Runbook Automation</span>
     </div>
+  </div>
+  <div style="flex:1;min-width:0;border-radius:12px;overflow:hidden;border:2px solid rgba(116,184,255,.25);box-shadow:0 24px 60px rgba(0,0,0,.6);">
+    <img src="./assets/reap-globe.png" alt="REAP global network map" style="width:100%;height:auto;display:block;">
   </div>
 </section>
 
@@ -2086,7 +2094,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="tcs-ch-row">
     <div class="tcs-ch-l">
       <h2 class="tcs-ch-title">Network teams don't fail from lack of data. They fail from lack of shared context.</h2>
-      <p class="tcs-ch-body">Every firewall, router, switch, and monitoring tool can produce alerts. But during an incident, engineers still need to manually connect the dots: which device changed, which link failed, which route shifted, which site is impacted, and whether the issue is safe to remediate. REAP was designed as a new command center for that moment — where the network is live, the topology is visible, and AI helps engineers move from alert noise to operational confidence.</p>
+      <p class="tcs-ch-body">Every firewall, router, switch, and monitoring tool can produce alerts. But during an incident, engineers still need to manually connect the dots: which device changed, which link failed, which route shifted, which site is impacted, and whether the issue is safe to remediate. REAP was designed as a new command center for that moment, where the network is live, the topology is visible, and AI helps engineers move from alert noise to operational confidence.</p>
     </div>
     <div class="tcs-ch-r">
       <div>
@@ -2099,7 +2107,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
       </div>
       <div>
         <p class="tcs-fr-title">Diagnosis depends on senior engineers</p>
-        <p class="tcs-fr-body">The fastest path to resolution often lives in the head of the most experienced engineer. REAP needed to make that reasoning available to the whole team — not just those who've seen it before.</p>
+        <p class="tcs-fr-body">The fastest path to resolution often lives in the head of the most experienced engineer. REAP needed to make that reasoning available to the whole team, not just those who've seen it before.</p>
       </div>
     </div>
   </div>
@@ -2109,7 +2117,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <section class="tcs-sec-alt">
   <div class="tcs-strat-head">
     <h2 class="tcs-strat-h">Three decisions that shaped everything.</h2>
-    <p class="tcs-strat-sub">REAP was not designed as another dashboard. It needed to compress the full incident workflow — visibility, diagnosis, reasoning, action, and auditability — into one operational surface.</p>
+    <p class="tcs-strat-sub">REAP was not designed as another dashboard. It needed to compress the full incident workflow, visibility, diagnosis, reasoning, action, and auditability, into one operational surface.</p>
   </div>
   <div class="tcs-strats">
     <div class="tcs-sc">
@@ -2143,6 +2151,9 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     <video autoplay muted loop playsinline style="width:100%;display:block;background:#05070b;">
       <source src="./assets/reap-demo.mov" type="video/mp4">
     </video>
+  </div>
+  <div class="tcs-shot-wrap" style="border:2px solid rgba(116,184,255,.2);max-width:960px;padding:0;overflow:hidden;margin-top:16px;border-radius:12px;">
+    <img src="./assets/reap-topology.png" alt="REAP network topology view" style="width:100%;height:auto;display:block;">
   </div>
   <div style="display:none;grid-template-columns:1.4fr 1fr;gap:2px;background:#0b1018;height:480px;">
       <!-- Left: Network Map -->
@@ -2198,7 +2209,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
             <span style="font-size:9px;font-weight:700;color:#ff4d7d;letter-spacing:.05em;">ACTIVE INCIDENT</span>
             <span style="font-size:7.5px;color:rgba(255,255,255,.3);">INC-2847 · 14m ago</span>
           </div>
-          <div style="font-size:10px;font-weight:600;color:#fff;margin-bottom:4px;">Firewall link down — Pune Branch</div>
+          <div style="font-size:10px;font-weight:600;color:#fff;margin-bottom:4px;">Firewall link down, Pune Branch</div>
           <div style="font-size:8px;color:rgba(255,255,255,.4);">FortiGate 200F · FW-PNE-01 · WAN interface</div>
         </div>
         <div style="padding:12px 14px;border-bottom:1px solid rgba(116,184,255,.1);flex:1;overflow:hidden;">
@@ -2226,7 +2237,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
         </div>
         <div style="padding:10px 14px;background:#0d1420;">
           <div style="font-size:7.5px;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.05em;margin-bottom:6px;">RECOMMENDED RUNBOOK</div>
-          <div style="font-size:8.5px;color:#fff;font-weight:500;margin-bottom:8px;">RB-042: WAN Link Failover — FortiGate</div>
+          <div style="font-size:8.5px;color:#fff;font-weight:500;margin-bottom:8px;">RB-042: WAN Link Failover, FortiGate</div>
           <div style="display:flex;gap:6px;">
             <div style="flex:1;background:#74b8ff;border-radius:4px;padding:6px;text-align:center;font-size:8px;font-weight:700;color:#05070b;">Run Diagnostics</div>
             <div style="width:36px;background:rgba(116,184,255,.1);border:1px solid rgba(116,184,255,.3);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#74b8ff;">⬡</div>
@@ -2237,15 +2248,15 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="tcs-feat-row">
     <div class="tcs-fc">
       <p class="tcs-fc-h">Global Network Command Center</p>
-      <p class="tcs-fc-b">A live map shows every monitored location with health status, impacted devices, active incidents, and network-level risk. Teams move from global overview to site-level detail without losing context — or switching tools.</p>
+      <p class="tcs-fc-b">A live map shows every monitored location with health status, impacted devices, active incidents, and network-level risk. Teams move from global overview to site-level detail without losing context, or switching tools.</p>
     </div>
     <div class="tcs-fc">
       <p class="tcs-fc-h">AI Incident Intelligence</p>
-      <p class="tcs-fc-b">REAP explains what happened, why it happened, what is affected, and what action is recommended. Confidence levels and supporting evidence make the AI output reviewable — trusted context, not a black box.</p>
+      <p class="tcs-fc-b">REAP explains what happened, why it happened, what is affected, and what action is recommended. Confidence levels and supporting evidence make the AI output reviewable, trusted context, not a black box.</p>
     </div>
     <div class="tcs-fc">
       <p class="tcs-fc-h">Topology, Runbooks & Remediation</p>
-      <p class="tcs-fc-b">Interactive topology exposes the affected path and blast radius. Engineers can run diagnostics, execute approved runbooks, and keep a complete audit trail — AI-guided without giving up engineer control.</p>
+      <p class="tcs-fc-b">Interactive topology exposes the affected path and blast radius. Engineers can run diagnostics, execute approved runbooks, and keep a complete audit trail, AI-guided without giving up engineer control.</p>
     </div>
   </div>
 </section>
@@ -2256,29 +2267,29 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="tcs-stats-row">
     <div class="tcs-stat">
       <p class="tcs-stat-n" style="background-image:linear-gradient(-71deg,#fff 49%,#74b8ff 97%);">4</p>
-      <p class="tcs-stat-l">Signal streams unified — SNMP traps, SNMP polling, syslog, and streaming telemetry feed one reasoning layer</p>
+      <p class="tcs-stat-l">Signal streams unified, SNMP traps, SNMP polling, syslog, and streaming telemetry feed one reasoning layer</p>
     </div>
     <div class="tcs-stat">
-      <p class="tcs-stat-n" style="background-image:linear-gradient(-71deg,#fff 49%,#6fffe0 97%);font-size:52px;line-height:1.1;">~5m</p>
-      <p class="tcs-stat-l">Initial reasoning target — first-pass incident analysis completed within minutes of incident creation</p>
+      <p class="tcs-stat-n" style="background-image:linear-gradient(-71deg,#fff 49%,#6fffe0 97%);">~5m</p>
+      <p class="tcs-stat-l">Initial reasoning target, first-pass incident analysis completed within minutes of incident creation</p>
     </div>
     <div class="tcs-stat">
       <p class="tcs-stat-n" style="background-image:linear-gradient(-71deg,#fff 49%,#74b8ff 97%);">1</p>
-      <p class="tcs-stat-l">Command center workflow — from site health to topology, AI investigation, runbook execution, and reporting</p>
+      <p class="tcs-stat-l">Command center workflow, from site health to topology, AI investigation, runbook execution, and reporting</p>
     </div>
-    <div class="tcs-stat" style="max-width:200px;">
-      <p class="tcs-stat-n" style="font-size:24px;line-height:1.2;background-image:linear-gradient(-65deg,#fff 49%,rgba(255,255,255,.5) 97%);font-weight:600;">100%<br>Accountable.</p>
-      <p class="tcs-stat-l">Every runbook execution, approval, and remediation action logged for auditability</p>
+    <div class="tcs-stat">
+      <p class="tcs-stat-n" style="background-image:linear-gradient(-65deg,#fff 49%,#6fffe0 97%);">100<span class="tcs-stat-sup">%</span></p>
+      <p class="tcs-stat-l">Accountable. Every runbook execution, approval, and remediation action logged for auditability</p>
     </div>
   </div>
   <div class="tcs-outcomes-row">
     <div class="tcs-outcome">
       <p class="tcs-oc-title">From alerts to network reasoning</p>
-      <p class="tcs-oc-body">REAP changes the workflow from checking many disconnected alerts to understanding one connected network story. Engineers can see the affected site, inspect topology, review evidence, and understand the likely root cause before taking action — without switching tools or pinging senior colleagues.</p>
+      <p class="tcs-oc-body">REAP changes the workflow from checking many disconnected alerts to understanding one connected network story. Engineers can see the affected site, inspect topology, review evidence, and understand the likely root cause before taking action, without switching tools or pinging senior colleagues.</p>
     </div>
     <div class="tcs-outcome">
       <p class="tcs-oc-title">AI support without losing engineer control</p>
-      <p class="tcs-oc-body">The product uses AI to guide investigation and recommend actions, but keeps operators in control. Runbooks are visible, approval is explicit for sensitive steps, and every action remains traceable. Trust is the product — not just a feature.</p>
+      <p class="tcs-oc-body">The product uses AI to guide investigation and recommend actions, but keeps operators in control. Runbooks are visible, approval is explicit for sensitive steps, and every action remains traceable. Trust is the product, not just a feature.</p>
     </div>
   </div>
 </section>
@@ -2301,20 +2312,21 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 
 <nav class="tcs-nav">
   <button class="tcs-back" onclick="showPortfolio()">← Back to all work</button>
-  <div class="tcs-nav-mid">QARun <span class="tcs-nav-tag">CASE STUDY</span></div>
-  <span class="tcs-nav-link" style="color:rgba(181,255,109,.7);">DevOps · QA SaaS</span>
 </nav>
 
-<section class="tcs-hero" style="background:radial-gradient(ellipse at 75% 25%,rgba(181,255,109,.07),transparent 45%),radial-gradient(ellipse at 25% 75%,rgba(70,230,255,.05),transparent 45%);">
-  <div style="width:583px;">
+<section class="tcs-hero" style="background:radial-gradient(ellipse at 75% 25%,rgba(181,255,109,.07),transparent 45%),radial-gradient(ellipse at 25% 75%,rgba(70,230,255,.05),transparent 45%);display:flex;align-items:center;gap:60px;">
+  <div style="flex:0 0 500px;">
     <div class="tcs-tag"><span class="tcs-tag-dot" style="background:#b5ff6d;box-shadow:0 0 8px rgba(181,255,109,.8);"></span>DevOps · QA SaaS · 2023</div>
     <h1 class="tcs-h1" style="background:linear-gradient(-60deg,#ffffff 50%,#b5ff6d 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">From API Chaos<br>to Calm Confidence.</h1>
-    <p class="tcs-sub">Reframing QARun from a tooling problem into a systems decision — a redesign that aligned the product to how testers actually reason about API validation.</p>
+    <p class="tcs-sub">Reframing QARun from a tooling problem into a systems decision, a redesign that aligned the product to how testers actually reason about API validation.</p>
     <div class="tcs-pills">
       <span class="tcs-pill">Lead UI Designer</span>
       <span class="tcs-pill">B2B SaaS · QA Platform</span>
       <span class="tcs-pill">Strategy + UX + System redesign</span>
     </div>
+  </div>
+  <div style="flex:1;min-width:0;border-radius:12px;overflow:hidden;border:2px solid rgba(181,255,109,.25);box-shadow:0 24px 60px rgba(0,0,0,.6);">
+    <img src="./assets/qarun.png" alt="QARun" style="width:100%;height:auto;display:block;">
   </div>
 </section>
 
@@ -2322,7 +2334,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="tcs-ch-row">
     <div class="tcs-ch-l">
       <h2 class="tcs-ch-title">QA professionals were configuring, not validating.</h2>
-      <p class="tcs-ch-body">QARun had the technical power to handle complex API testing. But the interface demanded too much from the people using it. Testers re-entered data across every test, validated through raw logs, and stitched together disconnected steps by memory. The workflow demanded too much — and returned too little confidence.</p>
+      <p class="tcs-ch-body">QARun had the technical power to handle complex API testing. But the interface demanded too much from the people using it. Testers re-entered data across every test, validated through raw logs, and stitched together disconnected steps by memory. The workflow demanded too much, and returned too little confidence.</p>
     </div>
     <div class="tcs-ch-r">
       <div>
@@ -2331,11 +2343,11 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
       </div>
       <div>
         <p class="tcs-fr-title">Validation through logs only</p>
-        <p class="tcs-fr-body">Test results came back as raw JSON and status codes. No visual confirmation layer. Every result required manual log parsing — a slow, error-prone process that killed throughput and confidence.</p>
+        <p class="tcs-fr-body">Test results came back as raw JSON and status codes. No visual confirmation layer. Every result required manual log parsing, a slow, error-prone process that killed throughput and confidence.</p>
       </div>
       <div>
         <p class="tcs-fr-title">No connected test journeys</p>
-        <p class="tcs-fr-body">Tests existed as isolated API calls. There was no way to model a user journey — login → action → validation → logout. Real-world API behaviour was untestable because the tool didn't think in flows.</p>
+        <p class="tcs-fr-body">Tests existed as isolated API calls. There was no way to model a user journey, login → action → validation → logout. Real-world API behaviour was untestable because the tool didn't think in flows.</p>
       </div>
     </div>
   </div>
@@ -2344,16 +2356,16 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <section class="tcs-sec-alt">
   <div class="tcs-strat-head">
     <h2 class="tcs-strat-h">Five mental models. One legible product.</h2>
-    <p class="tcs-strat-sub">The platform was redesigned around how QA testers actually think — not how APIs technically work. Three principles drove every decision from information architecture to interaction design.</p>
+    <p class="tcs-strat-sub">The platform was redesigned around how QA testers actually think, not how APIs technically work. Three principles drove every decision from information architecture to interaction design.</p>
   </div>
   <div class="tcs-strats">
     <div class="tcs-sc">
       <p class="tcs-sc-h">Reuse before recreate</p>
-      <p class="tcs-sc-b">Treat recurring test data as a reusable asset, not a repeated task. A centralised Data Library lets testers define variables once and reference them everywhere — endpoints, headers, auth tokens, payloads.</p>
+      <p class="tcs-sc-b">Treat recurring test data as a reusable asset, not a repeated task. A centralised Data Library lets testers define variables once and reference them everywhere, endpoints, headers, auth tokens, payloads.</p>
     </div>
     <div class="tcs-sc">
       <p class="tcs-sc-h">Flows over fragments</p>
-      <p class="tcs-sc-b">Design for test journeys and sequences, not disconnected API calls. Testers model real user behaviour — conditional sequences, chained assertions, shared session state — as a coherent flow, not a list of endpoints.</p>
+      <p class="tcs-sc-b">Design for test journeys and sequences, not disconnected API calls. Testers model real user behaviour, conditional sequences, chained assertions, shared session state, as a coherent flow, not a list of endpoints.</p>
     </div>
     <div class="tcs-sc">
       <p class="tcs-sc-h">Confidence over configuration</p>
@@ -2365,55 +2377,35 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <section class="tcs-sec">
   <div class="tcs-insight-row">
     <p class="tcs-ins-l">QA testers think in flows,<br>not endpoints.</p>
-    <p class="tcs-ins-r" style="color:#b5ff6d;">The platform had to match<br>how testers reason —<br>not how APIs work.</p>
+    <p class="tcs-ins-r" style="color:#b5ff6d;">The platform had to match<br>how testers reason <br>not how APIs work.</p>
   </div>
 </section>
 
 <section class="tcs-sec-alt">
   <h2 class="tcs-sol-h">One unified test → execution → reporting loop.</h2>
-  <div class="tcs-shot-wrap" style="border-color:#b5ff6d;max-width:960px;background:#0d0d0d;">
-    <div style="display:grid;grid-template-columns:220px 1fr;height:480px;background:#0d0d0d;">
-      <div style="background:#0d0d0d;border-right:1px solid rgba(255,255,255,.06);padding:20px 0;display:flex;flex-direction:column;gap:4px;">
-        <div style="padding:10px 20px;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:8px;">QARun</div>
-        <div style="padding:10px 20px;background:rgba(181,255,109,.08);border-left:2px solid #b5ff6d;font-size:12px;color:#b5ff6d;font-weight:500;">Dashboard</div>
-        <div style="padding:10px 20px;font-size:12px;color:rgba(255,255,255,.5);">Test Cases</div>
-        <div style="padding:10px 20px;font-size:12px;color:rgba(255,255,255,.5);">Data Library</div>
-        <div style="padding:10px 20px;font-size:12px;color:rgba(255,255,255,.5);">Execution View</div>
-        <div style="padding:10px 20px;font-size:12px;color:rgba(255,255,255,.5);">Reports</div>
-      </div>
-      <div style="display:grid;grid-template-rows:1fr 1fr;background:#0e0e0e;">
-        <div style="padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.05);">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><span style="font-size:13px;font-weight:600;color:#fff;">Test Cases</span><span style="padding:4px 12px;background:#b5ff6d;border-radius:999px;font-size:10px;font-weight:700;color:#0a0a0a;">+ New Test</span></div>
-          <div style="display:flex;flex-direction:column;gap:6px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:8px;"><div style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:#10b981;"></span><span style="font-size:11px;color:#fff;">User Login → Dashboard Load</span></div><span style="padding:2px 7px;border-radius:4px;background:rgba(16,185,129,.12);color:#10b981;font-size:9px;font-weight:600;">PASS</span></div>
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:8px;"><div style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:#ef4444;"></span><span style="font-size:11px;color:#fff;">Payment Flow Validation</span></div><span style="padding:2px 7px;border-radius:4px;background:rgba(239,68,68,.12);color:#ef4444;font-size:9px;font-weight:600;">FAIL</span></div>
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:8px;"><div style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:#f59e0b;"></span><span style="font-size:11px;color:#fff;">API Auth Token Refresh</span></div><span style="padding:2px 7px;border-radius:4px;background:rgba(245,158,11,.1);color:#f59e0b;font-size:9px;font-weight:600;">RUNNING</span></div>
-          </div>
-        </div>
-        <div style="padding:20px 24px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;font-weight:600;color:#fff;">Execution — Payment Flow</span><span style="padding:2px 8px;background:rgba(239,68,68,.12);color:#ef4444;border-radius:4px;font-size:10px;font-weight:600;">FAILED Step 3</span></div>
-          <div style="display:flex;flex-direction:column;gap:5px;">
-            <div style="display:flex;align-items:center;gap:12px;padding:7px 10px;border-radius:6px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);"><span style="font-size:9px;color:#10b981;font-weight:700;">✓</span><span style="font-size:10px;color:rgba(255,255,255,.7);">POST /auth/login</span><span style="margin-left:auto;font-size:9px;color:#10b981;">200 OK · 142ms</span></div>
-            <div style="display:flex;align-items:center;gap:12px;padding:7px 10px;border-radius:6px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);"><span style="font-size:9px;color:#10b981;font-weight:700;">✓</span><span style="font-size:10px;color:rgba(255,255,255,.7);">GET /cart/items</span><span style="margin-left:auto;font-size:9px;color:#10b981;">200 OK · 88ms</span></div>
-            <div style="display:flex;align-items:center;gap:12px;padding:7px 10px;border-radius:6px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);"><span style="font-size:9px;color:#ef4444;font-weight:700;">✗</span><span style="font-size:10px;color:rgba(255,255,255,.7);">POST /checkout/process</span><span style="margin-left:auto;font-size:9px;color:#ef4444;">422 · 201ms</span></div>
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);font-size:9px;color:rgba(255,255,255,.4);line-height:1.5;">Expected: 200 · Received: 422<br>Body mismatch: <span style="color:#ef4444;">payment_token</span> field missing</div>
-          </div>
-        </div>
-      </div>
+  <div class="tcs-shot-wrap" style="border-color:#b5ff6d;max-width:960px;background:#0d0d0d;padding:0;overflow:hidden;">
+    <img src="./assets/qarun-img1.png" alt="QARun dashboard overview" style="width:100%;display:block;">
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:960px;margin:16px auto 0;align-items:stretch;">
+    <div class="tcs-shot-wrap" style="border-color:rgba(181,255,109,.4);background:#0d0d0d;padding:0;overflow:hidden;margin:0;max-width:100%;height:480px;">
+      <img src="./assets/qarun-img2.png" alt="QARun test case builder" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+    </div>
+    <div class="tcs-shot-wrap" style="border-color:rgba(181,255,109,.4);background:#0d0d0d;padding:0;overflow:hidden;margin:0;max-width:100%;height:480px;">
+      <img src="./assets/qarun-img3.png" alt="QARun execution view" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
     </div>
   </div>
-  <div class="tcs-feat-row">
+  <div class="tcs-feat-row" style="margin-top:56px;">
     <div class="tcs-fc">
       <p class="tcs-fc-h">Test Case Builder</p>
-      <p class="tcs-fc-b">Modular test blocks with conditional sequences — login → action → validation → logout. Testers model real user journeys instead of isolated endpoints. Shared session state keeps tests connected and realistic.</p>
+      <p class="tcs-fc-b">Modular test blocks with conditional sequences, login → action → validation → logout. Testers model real user journeys instead of isolated endpoints. Shared session state keeps tests connected and realistic.</p>
     </div>
     <div class="tcs-fc">
       <p class="tcs-fc-h">Data Library</p>
-      <p class="tcs-fc-b">Centralised variables, reusable datasets, and human-readable naming. Define an auth token once — reference it everywhere. Less setup, fewer mistakes, higher confidence across the entire test suite.</p>
+      <p class="tcs-fc-b">Centralised variables, reusable datasets, and human-readable naming. Define an auth token once, reference it everywhere. Less setup, fewer mistakes, higher confidence across the entire test suite.</p>
     </div>
     <div class="tcs-fc">
       <p class="tcs-fc-h">Execution Dashboard</p>
-      <p class="tcs-fc-b">Response previews, visual status indicators, and plain-language validation summaries replace raw JSON parsing. Expandable logs available when needed — confidence, not complexity, is the default.</p>
+      <p class="tcs-fc-b">Response previews, visual status indicators, and plain-language validation summaries replace raw JSON parsing. Expandable logs available when needed, confidence, not complexity, is the default.</p>
     </div>
   </div>
 </section>
@@ -2428,7 +2420,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   </div>
   <div class="tcs-outcomes-row">
     <div class="tcs-outcome"><p class="tcs-oc-title">Testers stopped configuring and started validating</p><p class="tcs-oc-body">Faster task completion, lower memory load, and easier-to-understand outcomes. The redesign removed the cognitive overhead that turned technical capability into friction. QA testers could focus on quality, not setup.</p></div>
-    <div class="tcs-outcome"><p class="tcs-oc-title">A scalable product architecture</p><p class="tcs-oc-body">The five-model structure — Dashboard, Test Cases, Data Library, Execution View, Reports — became the product blueprint. Modular architecture supports new capability without rebuilding context for existing users.</p></div>
+    <div class="tcs-outcome"><p class="tcs-oc-title">A scalable product architecture</p><p class="tcs-oc-body">The five-model structure, Dashboard, Test Cases, Data Library, Execution View, Reports, became the product blueprint. Modular architecture supports new capability without rebuilding context for existing users.</p></div>
   </div>
 </section>
 
@@ -2641,7 +2633,7 @@ function startDesignationCycle() {
   if (!el) return;
 
   let idx = 0;
-  const TYPE_MS  = 52;   // ms per character — consistent, no jitter
+  const TYPE_MS  = 52;   // ms per character, consistent, no jitter
   const HOLD_MS  = 10000; // hold fully typed for 10 seconds
   const FADE_MS  = 450;  // CSS fade-out duration
 
@@ -2664,7 +2656,7 @@ function startDesignationCycle() {
 
   function runNext() {
     typeIn(designations[idx], () => {
-      // Fully typed — hold 10 seconds then fade out
+      // Fully typed, hold 10 seconds then fade out
       setTimeout(() => {
         fadeOut(() => {
           idx = (idx + 1) % designations.length;
@@ -2677,7 +2669,7 @@ function startDesignationCycle() {
   runNext();
 }
 
-/* ═══ CURSOR — Brand color particle trail ═══ */
+/* ═══ CURSOR, Brand color particle trail ═══ */
 (() => {
   if (matchMedia('(hover:none)').matches) return;
 
@@ -2685,7 +2677,7 @@ function startDesignationCycle() {
   const ring  = document.getElementById('cursorRing');
   if (!dot) return;
 
-  // Brand palette — subtle, cycled randomly
+  // Brand palette, subtle, cycled randomly
   const PALETTE = [
     'rgba(70,230,255,',    // cyan
     'rgba(154,124,255,',   // violet
@@ -2722,7 +2714,7 @@ function startDesignationCycle() {
 
   addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
-  // Hover detection — expand on interactive elements
+  // Hover detection, expand on interactive elements
   const hoverSel = 'a,button,.hp-card,.hp-card-cta,.hp-view-btn,.hp-dl-btn,.igs-back,.cs-back,.nav-a,.btn-r,.btn-p,.btn-g,.btn-indigo,.igs-cta-btn';
   document.addEventListener('mouseover', e => {
     if (e.target.closest(hoverSel)) {
@@ -2876,10 +2868,10 @@ function startDesignationCycle() {
   const D = {
     aura: {
       name: 'AURA Framework', ac: 'var(--cyan)',
-      intro: 'A diagnostic framework for turning fuzzy design briefs into structured product opportunities. Built from 18+ B2B engagements — reduces discovery phase by 40% by front-loading the right questions.',
+      intro: 'A diagnostic framework for turning fuzzy design briefs into structured product opportunities. Built from 18+ B2B engagements, reduces discovery phase by 40% by front-loading the right questions.',
       steps: [
         { n: 'Audit',      d: 'Map current-state friction, data gaps, and hidden costs' },
-        { n: 'Understand', d: 'Deep user research — interviews, shadowing, log analysis' },
+        { n: 'Understand', d: 'Deep user research, interviews, shadowing, log analysis' },
         { n: 'Resolve',    d: 'Prioritize by impact × effort with team alignment' },
         { n: 'Architect',  d: 'Design IA and define AI-layer touchpoints' },
         { n: 'Adapt',      d: 'Validate fast, iterate, measure real adoption' },
@@ -2891,7 +2883,7 @@ function startDesignationCycle() {
       intro: 'A cross-functional alignment method that converts scattered data into validated product moves. Proven in healthcare and manufacturing where fragmented signals delay decisions.',
       steps: [
         { n: 'Scan',        d: 'Collect raw signals from all system touchpoints' },
-        { n: 'Interrogate', d: 'Ask why — not just what\'s broken' },
+        { n: 'Interrogate', d: 'Ask why, not just what\'s broken' },
         { n: 'Generate',    d: 'Rapid ideation with structured constraints' },
         { n: 'Navigate',    d: 'Align business and user via decision maps' },
         { n: 'Align',       d: 'Cross-functional agreement before build' },
@@ -2901,7 +2893,7 @@ function startDesignationCycle() {
     },
     prism: {
       name: 'PRISM Model', ac: 'var(--lime)',
-      intro: 'Design thinking sharpened with a measurement-first lens. The backbone of every case study — scales cleanly from 0→1 prototyping to enterprise-wide rollout.',
+      intro: 'Design thinking sharpened with a measurement-first lens. The backbone of every case study, scales cleanly from 0→1 prototyping to enterprise-wide rollout.',
       steps: [
         { n: 'Problem',  d: 'Frame the challenge as a testable hypothesis' },
         { n: 'Research', d: 'Triangulate user, business, and tech truth' },
@@ -2947,12 +2939,12 @@ function startDesignationCycle() {
 /* ═══ WORK CARDS ═══ */
 (() => {
   const projects = [
-    { ac: '--cyan',   ind: 'NetOps · AI',         name: 'REAP',            one: 'AI NetOps command center — multi-site network monitoring → incident reasoning.',  metrics: ['4 signal streams', '100% audit trail'],        cs: 'reap' },
-    { ac: '--violet', ind: 'Manufacturing · AI', name: 'FactoryPilot AI', one: 'Operations co-pilot — machine data → smarter plant decisions.',                metrics: ['32% faster response', '2.4× shift speed'],     href: '#' },
-    { ac: '--lime',   ind: 'DevOps · QA',        name: 'QARun',           one: 'Intelligent API testing — testers validate, not configure.',                   metrics: ['70% less data entry', '50% fewer misconfigs'], cs: 'qarun' },
+    { ac: '--cyan',   ind: 'NetOps · AI',         name: 'REAP',            one: 'AI NetOps command center, multi-site network monitoring → incident reasoning.',  metrics: ['4 signal streams', '100% audit trail'],        cs: 'reap' },
+    { ac: '--violet', ind: 'Manufacturing · AI', name: 'FactoryPilot AI', one: 'Operations co-pilot, machine data → smarter plant decisions.',                metrics: ['32% faster response', '2.4× shift speed'],     href: '#' },
+    { ac: '--lime',   ind: 'DevOps · QA',        name: 'QARun',           one: 'Intelligent API testing, testers validate, not configure.',                   metrics: ['70% less data entry', '50% fewer misconfigs'], cs: 'qarun' },
     { ac: '--amber',  ind: 'AgriTech · IoT',     name: 'Farm Monitor',    one: 'Real-time shrimp farm monitoring + actionable alerts.',                        metrics: ['75% faster alerts', '95% adoption'],           cs: 'farmmonitor' },
     { ac: '--rose',   ind: 'Manufacturing',      name: 'Factory Command', one: 'Shop-floor data → leadership dashboards, real-time.',                          metrics: ['3× faster incidents', '25% productivity'],     href: '#' },
-    { ac: '--indigo', ind: 'Aviation · Ground Ops', name: 'IndiGo Ground Control', one: 'Real-time tarmac vehicle tracking across 3 airports — one unified ground operations command view.', metrics: ['3× faster dispatch', '70% fewer missed alerts', '58 vehicles live'], cs: 'indigo' },
+    { ac: '--indigo', ind: 'Aviation · Ground Ops', name: 'IndiGo Ground Control', one: 'Real-time tarmac vehicle tracking across 3 airports, one unified ground operations command view.', metrics: ['3× faster dispatch', '70% fewer missed alerts', '58 vehicles live'], cs: 'indigo' },
   ];
   const grid = document.getElementById('workGrid');
   projects.forEach(p => {

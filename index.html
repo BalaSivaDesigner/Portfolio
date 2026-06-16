@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Bala, Senior Product Designer. AI-powered B2B systems. Complexity → clarity."/>
 <title>Bala · Product Designer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 36'%3E%3Cpath fill='%239a7cff' d='M0 2.2C0 .5.2.3.8.3h16c4.6 0 7.9 2.6 8.9 6.6.4 1.6.3 3.2-.3 4.6l-1.4 3.2c-.2.4-.6.4-.9.2-1-.7-2.1-1.2-3.3-1.6-.3-.1-.4-.4-.3-.7l.5-1.1c.6-1.3.5-2.8-.3-3.9-.9-1.2-2.3-1.9-3.8-1.9H.8C.2 5.7 0 5.5 0 3.9zm5.5 5.7c4.4 0 8.8 0 11.8.1 1.4.5 2 1.4 1.9 2.6-.1 1-.7 1.7-1.5 2-1.7.5-13.6.2-14.3.2-.6 0-1.2-.3-1.6-.8C.9 16 1.4 14.4 5.5 7.9zM0 26.2c0-1.7.2-1.9.8-1.9h7.8c6.1 0 8.2 0 8.5.1.6.2 1.3 1 1.4 1.6.2 1.2-.4 2.3-1.4 2.6-.3.1-2.5.1-8.5.1H.8c-.6 0-.8-.2-.8-1.8z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1058,11 +1059,16 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   }
   .igs-stats {
     position:relative !important; top:auto !important; left:auto !important;
-    flex-wrap:wrap !important; gap:24px 16px !important;
+    flex-direction:column !important; gap:28px !important;
     padding:0 24px 40px !important; box-sizing:border-box;
-    justify-content:flex-start;
+    align-items:stretch !important;
   }
-  .igs-stat { min-width:calc(50% - 16px) !important; width:auto !important; }
+  .igs-stat,
+  .igs-stat:nth-child(1),.igs-stat:nth-child(2),
+  .igs-stat:nth-child(3),.igs-stat:nth-child(4){
+    width:100% !important; min-width:0 !important;
+    align-items:flex-start !important; text-align:left !important;
+  }
   .igs-stat-n { font-size:clamp(40px,9vw,64px) !important; line-height:1 !important; }
   .igs-stat-sup { font-size:clamp(22px,5vw,36px) !important; line-height:1 !important; }
   .igs-stat-l { font-size:13px !important; }
@@ -1179,6 +1185,213 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   .tcs-cta-h,.igs-cta-h { font-size:28px !important; }
   .tcs-ins-l,.tcs-ins-r { font-size:22px !important; }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   RESPONSIVE v2 - matches live DOM. Breakpoints 1024/986/768/480/360.
+   Basis: Material 3 window-size classes, 8pt spacing grid,
+   stepped type scale, ≥44px tap targets, zero horizontal scroll.
+   This block is intentionally last in the cascade so its !important
+   rules win over earlier (partly stale) responsive rules.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ===== HOMEPAGE: fixed 1440px abs canvas → fluid vertical flow (≤1024) ===== */
+@media (max-width:1024px){
+  .hp-outer{overflow-x:hidden !important;width:100% !important;}
+  .hp-frame{
+    width:100% !important;max-width:100% !important;height:auto !important;
+    min-height:0 !important;position:relative !important;overflow:visible !important;
+    display:flex !important;flex-direction:column !important;margin:0 !important;
+    padding:0 0 64px !important;
+  }
+  .hp-name,.hp-desg-area,.hp-pw-area,.hp-sel-h,.hp-cards-wrap,.hp-clients-h,
+  .hp-clients-grid,.hp-nums-section,.hp-journey-section,.hp-about-section,
+  .hp-footer-section,.hp-copyright{
+    position:relative !important;top:auto !important;left:auto !important;
+    right:auto !important;bottom:auto !important;transform:none !important;
+    width:100% !important;max-width:100% !important;box-sizing:border-box !important;
+  }
+  /* HERO stack: name → designation → prompt window */
+  .hp-name{margin:96px 0 0 !important;padding:0 40px !important;
+    font-size:clamp(44px,7vw,72px) !important;line-height:1.05 !important;white-space:normal !important;}
+  .hp-desg-area{height:auto !important;min-height:0 !important;max-height:none !important;
+    overflow:visible !important;margin:0 !important;padding:8px 40px 0 !important;}
+  .hp-desg-text{font-size:clamp(34px,6vw,64px) !important;line-height:1.08 !important;white-space:normal !important;}
+  .hp-pw-area{padding:28px 40px 0 !important;}
+  .hp-pw-area .pw{max-width:560px !important;width:100% !important;}
+  /* SELECTED WORK */
+  .hp-sel-h{white-space:normal !important;text-align:left !important;
+    font-size:clamp(36px,5vw,52px) !important;line-height:1.1 !important;padding:64px 40px 28px !important;}
+  /* CARDS: wrapper → 2-col grid at tablet */
+  .hp-cards-wrap{display:grid !important;grid-template-columns:1fr 1fr !important;
+    gap:28px !important;padding:0 40px !important;box-sizing:border-box !important;}
+  .hp-card{position:relative !important;top:auto !important;left:auto !important;width:100% !important;margin:0 !important;}
+  .hp-card-img-wrap{width:100% !important;height:auto !important;aspect-ratio:585/371 !important;}
+  .hp-card-meta{width:100% !important;}
+  /* CLIENTS */
+  .hp-clients-h{white-space:normal !important;text-align:center !important;
+    font-size:clamp(32px,4.5vw,52px) !important;line-height:1.12 !important;padding:72px 40px 28px !important;}
+  .hp-clients-grid{height:auto !important;padding:0 40px !important;overflow:hidden !important;}
+  .hp-clients-grid img{position:relative !important;width:100% !important;height:auto !important;}
+  /* NUMBERS */
+  .hp-nums-section{padding:72px 40px !important;gap:48px !important;}
+  .hp-nums-h{font-size:clamp(32px,4.5vw,52px) !important;line-height:1.12 !important;white-space:normal !important;}
+  .hp-stats-row{flex-wrap:wrap !important;gap:36px 24px !important;justify-content:flex-start !important;}
+  .hp-stat-col{flex:0 0 calc(33.333% - 16px) !important;}
+  .hp-stat-num-wrap,.hp-stat-num-big{font-size:clamp(48px,7vw,72px) !important;}
+  .hp-stat-num-sup{font-size:clamp(24px,3.5vw,34px) !important;top:-8px !important;}
+  /* JOURNEY + TIMELINE */
+  .hp-journey-section{padding:72px 40px !important;gap:48px !important;}
+  .hp-jrn-top{flex-direction:column !important;align-items:flex-start !important;gap:28px !important;}
+  .hp-jrn-left{width:100% !important;}
+  .hp-jrn-h{font-size:clamp(32px,4.5vw,52px) !important;line-height:1.12 !important;}
+  .hp-jrn-p{width:100% !important;max-width:560px !important;}
+  .hp-profile-img{width:160px !important;height:auto !important;}
+  .hp-timeline{flex-wrap:wrap !important;gap:32px 48px !important;align-items:flex-start !important;}
+  .hp-tl-item{width:auto !important;min-width:200px !important;flex:1 1 200px !important;}
+  .hp-tl-line{width:100% !important;}
+  /* ABOUT + COLLAGE (text first, collage below) */
+  .hp-about-section{flex-direction:column-reverse !important;align-items:center !important;
+    gap:48px !important;padding:72px 40px !important;}
+  .hp-about-right{width:100% !important;max-width:620px !important;}
+  .hp-about-h{font-size:clamp(32px,4.5vw,52px) !important;line-height:1.12 !important;}
+  .hp-collage{zoom:.8 !important;margin:0 auto !important;}
+  /* FOOTER */
+  .hp-footer-section{padding:80px 40px 40px !important;gap:32px !important;}
+  .hp-footer-h{font-size:clamp(44px,7vw,72px) !important;line-height:1.08 !important;}
+  .hp-copyright{padding:8px 40px 40px !important;text-align:center !important;}
+  /* NAV: minimal - logo + Resume only */
+  .nav-links{display:none !important;}
+  .menu-btn{display:none !important;}
+  /* CASE-STUDY heroes: keep side-by-side until 900 (handled below) */
+}
+
+/* ===== MOBILE (≤768): single column everywhere ===== */
+@media (max-width:768px){
+  .hp-name{margin:84px 0 0 !important;padding:0 24px !important;font-size:clamp(38px,10vw,52px) !important;}
+  .hp-desg-area{padding:8px 24px 0 !important;}
+  .hp-desg-text{font-size:clamp(30px,8vw,44px) !important;}
+  .hp-pw-area{padding:24px 24px 0 !important;}
+  .hp-pw-area .pw{max-width:100% !important;}
+  .hp-sel-h{padding:56px 24px 24px !important;font-size:clamp(30px,8vw,42px) !important;}
+  .hp-cards-wrap{grid-template-columns:1fr !important;gap:24px !important;padding:0 24px !important;}
+  .hp-card-title{font-size:clamp(22px,6vw,28px) !important;}
+  .hp-card-desc{font-size:13px !important;max-width:60% !important;}
+  .hp-clients-h{padding:56px 24px 24px !important;font-size:clamp(28px,7vw,40px) !important;}
+  .hp-clients-grid{padding:0 24px !important;}
+  .hp-nums-section{padding:56px 24px !important;gap:36px !important;}
+  .hp-nums-h{font-size:clamp(28px,7vw,40px) !important;}
+  /* numbers: centered 2×2 grid, 5th item centered below */
+  .hp-nums-section{align-items:center !important;}
+  .hp-stats-row{display:grid !important;grid-template-columns:auto auto !important;
+    justify-content:center !important;column-gap:56px !important;row-gap:40px !important;
+    width:auto !important;max-width:100% !important;}
+  .hp-stat-col{flex:none !important;}
+  .hp-stat-col:last-child{grid-column:1 / -1 !important;justify-self:center !important;
+    align-items:center !important;text-align:center !important;}
+  .hp-stat-num-wrap,.hp-stat-num-big{font-size:clamp(40px,11vw,56px) !important;}
+  .hp-stat-num-sup{font-size:clamp(20px,5vw,28px) !important;top:-6px !important;}
+  .hp-stat-lbl{font-size:14px !important;}
+  .hp-journey-section{padding:56px 24px !important;gap:40px !important;}
+  .hp-jrn-h{font-size:clamp(28px,7vw,40px) !important;}
+  .hp-timeline{flex-direction:column !important;gap:0 !important;}
+  .hp-tl-item{width:100% !important;min-width:0 !important;flex:none !important;
+    border-bottom:1px solid rgba(255,255,255,.08);padding:18px 0 !important;}
+  .hp-tl-item:first-child{padding-top:0 !important;}
+  .hp-tl-item:last-child{border-bottom:none !important;}
+  .hp-tl-line{display:none !important;}
+  .hp-tl-role{font-size:20px !important;}
+  .hp-about-section{padding:56px 24px !important;gap:36px !important;}
+  .hp-about-h{font-size:clamp(28px,7vw,40px) !important;}
+  .hp-collage{zoom:.62 !important;margin:0 auto !important;}
+  .hp-footer-section{padding:64px 24px 32px !important;}
+  .hp-footer-h{font-size:clamp(36px,9vw,56px) !important;}
+}
+
+/* ===== CASE-STUDY heroes: stack 2-col → 1-col below 900 ===== */
+@media (max-width:900px){
+  .tcs-hero{flex-direction:column !important;align-items:stretch !important;gap:28px !important;}
+  .tcs-hero>div{flex:1 1 auto !important;width:100% !important;max-width:100% !important;min-width:0 !important;}
+  .cs-img-2col{grid-template-columns:1fr !important;}
+  .cs-img-2col .tcs-shot-wrap{height:auto !important;}
+  .cs-img-2col img{height:auto !important;}
+}
+
+/* ===== LARGE MOBILE (≤480) ===== */
+@media (max-width:480px){
+  html{font-size:15px;}
+  .hp-name{margin:76px 0 0 !important;font-size:clamp(34px,11vw,44px) !important;}
+  .hp-desg-text{font-size:clamp(26px,8.5vw,38px) !important;}
+  .hp-sel-h{font-size:clamp(26px,8vw,36px) !important;}
+  .hp-clients-h,.hp-nums-h,.hp-jrn-h,.hp-about-h{font-size:clamp(24px,7vw,34px) !important;}
+  .hp-stats-row{column-gap:44px !important;}
+  .hp-stat-num-wrap,.hp-stat-num-big{font-size:clamp(36px,12vw,48px) !important;}
+  .hp-footer-h{font-size:clamp(32px,10vw,44px) !important;}
+  .hp-collage{zoom:.52 !important;margin:0 auto !important;}
+  .hp-card-meta{flex-direction:column !important;align-items:flex-start !important;gap:4px !important;}
+  .hp-card-desc{max-width:100% !important;text-align:left !important;}
+  /* case studies */
+  .tcs-h1{font-size:clamp(30px,9vw,42px) !important;}
+  .igs-h1{font-size:clamp(30px,9vw,42px) !important;}
+  .tcs-stat,.igs-stat{min-width:calc(50% - 12px) !important;}
+}
+
+/* ===== SMALL MOBILE (≤360) ===== */
+@media (max-width:360px){
+  .hp-name{font-size:32px !important;}
+  .hp-desg-text{font-size:25px !important;}
+  .hp-sel-h{font-size:25px !important;}
+  .hp-clients-h,.hp-nums-h,.hp-jrn-h,.hp-about-h{font-size:23px !important;}
+  .hp-stat-num-wrap,.hp-stat-num-big{font-size:38px !important;}
+  .hp-footer-h{font-size:30px !important;}
+  .hp-collage{zoom:.46 !important;margin:0 auto !important;}
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM - single source of truth for the type scale.
+   One fluid clamp() per tier; clamp max == the desktop size, so desktop
+   is unchanged while every breakpoint scales on ONE consistent ramp.
+   Placed last so it governs every page (home + all case studies).
+   ──────────────────────────────────────────────────────────────────
+   Tier        Desktop  Fluid scale
+   Display     80px     clamp(32px, 8vw, 80px)   hero name+designation,
+                                                 footer CTA, case-study h1+cta
+   Heading     56px     clamp(26px, 5vw, 56px)   all section headings
+   Insight     46px     clamp(24px, 4.5vw, 46px) pull-quotes
+   ════════════════════════════════════════════════════════════════════ */
+.hp-name,.hp-desg-text,.hp-footer-h,.tcs-h1,.tcs-cta-h,.igs-h1,.igs-cta-h{
+  font-size:clamp(32px,8vw,80px) !important;line-height:1.12 !important;
+}
+/* designation wraps to multiple lines - give it comfortable leading */
+.hp-desg-text{line-height:1.14 !important;}
+.hp-sel-h,.hp-clients-h,.hp-nums-h,.hp-jrn-h,.hp-about-h,
+.tcs-ch-title,.tcs-strat-h,.tcs-sol-h,.tcs-res-h,
+.igs-ch-title,.igs-strat-h,.igs-sol-h,.igs-res-h{
+  font-size:clamp(26px,5vw,56px) !important;line-height:1.12 !important;
+}
+.tcs-ins-l,.tcs-ins-r,.igs-ins-l,.igs-ins-r{
+  font-size:clamp(24px,4.5vw,46px) !important;line-height:1.28 !important;
+}
+/* Accent CTA buttons - consistent size everywhere */
+.hp-view-btn{font-size:15px !important;}
+
+/* ===== NAV alignment: logo + Resume align to the hero gutters ===== */
+@media (max-width:1024px){
+  #main-nav{padding-left:40px !important;padding-right:40px !important;}
+}
+@media (max-width:768px){
+  #main-nav{padding-left:24px !important;padding-right:24px !important;}
+  .tcs-nav,.igs-nav{padding-left:24px !important;padding-right:24px !important;}
+  .btn-r{font-size:13px !important;padding:9px 16px !important;}  /* readable + tappable */
+}
+
+/* ===== Smoother page transitions (home ⇄ case study) ===== */
+@keyframes csFadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.cs-anim{animation:csFadeUp .5s cubic-bezier(.16,.9,.3,1);}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){
+  .cs-anim{animation:none !important;}
+  html{scroll-behavior:auto;}
+}
 </style>
 </head>
 <body>
@@ -1260,6 +1473,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
 <!-- ═══ SELECTED WORK ═══ -->
 <h2 class="hp-sel-h" id="work">Selected work</h2>
 
+<div class="hp-cards-wrap">
 <!-- QARun, Top Left -->
 <div class="hp-card" style="top:902px;left:100px;" onclick="showCaseStudy('qarun','QARun')">
   <div class="hp-card-inner">
@@ -1319,6 +1533,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
     </div>
   </div>
 </div>
+</div><!-- end hp-cards-wrap -->
 
 <!-- ═══ CLIENTS ═══ -->
 <h2 class="hp-clients-h">Clients I've empowered through design</h2>
@@ -2148,7 +2363,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <h2 class="tcs-sol-h">One system. Every site. Every device.</h2>
   <!-- REAP Screen Demo Video -->
   <div class="tcs-shot-wrap" style="border:2px solid rgba(116,184,255,.35);max-width:960px;background:#05070b;border-radius:16px;overflow:hidden;">
-    <video autoplay muted loop playsinline style="width:100%;display:block;background:#05070b;">
+    <video muted loop playsinline preload="none" style="width:100%;display:block;background:#05070b;">
       <source src="./assets/reap-demo.mov" type="video/mp4">
     </video>
   </div>
@@ -2386,7 +2601,7 @@ button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer
   <div class="tcs-shot-wrap" style="border-color:#b5ff6d;max-width:960px;background:#0d0d0d;padding:0;overflow:hidden;">
     <img src="./assets/qarun-img1.png" alt="QARun dashboard overview" style="width:100%;display:block;">
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:960px;margin:16px auto 0;align-items:stretch;">
+  <div class="cs-img-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:960px;margin:16px auto 0;align-items:stretch;">
     <div class="tcs-shot-wrap" style="border-color:rgba(181,255,109,.4);background:#0d0d0d;padding:0;overflow:hidden;margin:0;max-width:100%;height:480px;">
       <img src="./assets/qarun-img2.png" alt="QARun test case builder" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
     </div>
@@ -2947,6 +3162,7 @@ function startDesignationCycle() {
     { ac: '--indigo', ind: 'Aviation · Ground Ops', name: 'IndiGo Ground Control', one: 'Real-time tarmac vehicle tracking across 3 airports, one unified ground operations command view.', metrics: ['3× faster dispatch', '70% fewer missed alerts', '58 vehicles live'], cs: 'indigo' },
   ];
   const grid = document.getElementById('workGrid');
+  if (!grid) return; // legacy work-grid not present in current DOM
   projects.forEach(p => {
     const card = document.createElement('article');
     card.className = 'work-card' + (p.soon ? ' soon' : '');
@@ -2987,6 +3203,10 @@ function showCaseStudy(id, name) {
   if (!page) return; // guard: page doesn't exist
   if (portfolio) portfolio.style.display = 'none';
   page.style.display = 'block';
+  page.classList.remove('cs-anim'); void page.offsetWidth; page.classList.add('cs-anim');
+  // lazy-load + play any video in this case study (kept out of initial page load)
+  const vid = page.querySelector('video');
+  if (vid) { try { vid.load(); const pr = vid.play(); if (pr && pr.catch) pr.catch(()=>{}); } catch(e){} }
   if (mainNav) { mainNav.style.opacity = '0'; mainNav.style.pointerEvents = 'none'; }
   if (csNav) { csNav.style.display = 'block'; csNav.style.opacity = '1'; csNav.style.transform = 'none'; }
   const titleEl = document.getElementById('cs-nav-title');
@@ -2995,11 +3215,11 @@ function showCaseStudy(id, name) {
 }
 
 function showPortfolio() {
-  // Hide all case study pages
-  document.querySelectorAll('[id^="pg-"]:not(#pg-portfolio)').forEach(el => { el.style.display = 'none'; });
+  // Hide all case study pages (pause any playing video to free bandwidth)
+  document.querySelectorAll('[id^="pg-"]:not(#pg-portfolio)').forEach(el => { el.querySelectorAll('video').forEach(v => { try { v.pause(); } catch(e){} }); el.style.display = 'none'; });
   // Show portfolio
   const portfolio = document.getElementById('pg-portfolio');
-  if (portfolio) portfolio.style.display = 'block';
+  if (portfolio) { portfolio.style.display = 'block'; portfolio.classList.remove('cs-anim'); void portfolio.offsetWidth; portfolio.classList.add('cs-anim'); }
   // Hide case study nav
   const csNav = document.getElementById('cs-nav');
   if (csNav) { csNav.style.display = 'none'; csNav.style.opacity = '0'; }
